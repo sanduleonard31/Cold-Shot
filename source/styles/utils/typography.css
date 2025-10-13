@@ -1,0 +1,39 @@
+/* Font Face Declarations */
+@font-face {
+    font-family: 'Primary';
+    src: url('../../../assets/fonts/TradeGothic-Condensed-No.18.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Primary';
+    src: url('../../../assets/fonts/TradeGothic-Condensed-No.18-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Secondary';
+    src: url('../../../assets/fonts/SoDoSans-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Font Variables */
+:root {
+    --font-primary: 'Primary', sans-serif;
+    --font-secondary: 'Secondary', serif;
+}
+
+h1 { font-size: var(--font-size-h1);  font-family: var(--font-primary);    font-weight: bold; }
+h2 { font-size: var(--font-size-h2);  font-family: var(--font-primary);    font-weight: bold; }
+h3 { font-size: var(--font-size-h3);  font-family: var(--font-primary);    font-weight: normal; }
+h4 { font-size: var(--font-size-h4);  font-family: var(--font-primary);    font-weight: normal; }
+h5 { font-size: var(--font-size-h5);  font-family: var(--font-secondary);  font-weight: normal; }
+h6 { font-size: var(--font-size-h6);  font-family: var(--font-secondary);  font-weight: normal; }
+p  { font-size: 12pt;                 font-family: var(--font-secondary);  font-weight: normal; }
+a  { font-size: 12pt;                 font-family: var(--font-secondary);  font-weight: normal; } 

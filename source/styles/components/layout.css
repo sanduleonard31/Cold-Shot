@@ -1,0 +1,6 @@
+main{
+    margin-top: var(--header-height);
+    margin-bottom: var(--footer-height);
+    height: var(--layout-max-height);
+    padding: var(--layout-padding);
+}

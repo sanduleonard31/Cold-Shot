@@ -1,0 +1,80 @@
+:root{
+    /* Main palette */
+    --primary-color: #2c6847; /* Deep forest green */
+    --secondary-color: #ddeae6; /* Pale mint/sage */
+    --accent-color: #337651; /* Medium emerald green */
+    --background-color: #f9f9fa; /* Off-white/light gray */
+    --text-color: #1a372c; /* Dark forest green */
+    --border-color: #f4f2ee; /* Light cream */
+
+    
+    /* Icon colors and effects */
+    --icon-filter: sepia(100%) brightness(80%) saturate(100%) hue-rotate(90deg); /* Icon filter effects */
+    
+    /* Header specific */
+    --header-height: 4rem; --header-height-phone: 2rem;
+    --header-icon-size: 1.5rem; --header-icon-size-phone: 1rem;
+    --header-background-color: var(--glass-color);
+    --header-border: var(--glass-border);
+    --header-text-color: var(--text-color);
+    --z-index-sticky: 1000;
+
+    /* Main layout */
+    --layout-max-height: 100svh;
+    --layout-padding: 2rem;
+
+    /* Footer specific */
+    --footer-height: 10rem; --footer-height-phone: 5rem;
+    --footer-background-color: var(--accent-color);
+    --footer-background-color-hover: var(--primary-color);
+    --footer-text-color: var(--text-color);
+    --footer-text-color-hover: var(--background-color);
+    --footer-border: var(--border-color);
+
+    /* Glassmorphism */
+    --glass-color: rgba(255, 255, 255, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --blur-intensity: 3px;
+
+    /* Shadows */
+    --black-shadow: rgba(0, 0, 0, 0.4);
+    --white-shadow: rgba(255, 255, 255, 0.4);
+    --box-shadow-top: 0 5px 25px var(--black-shadow); --box-shadow-bottom: 0 -5px 25px var(--black-shadow);
+    --box-shadow-black-glow: 0 0 15px var(--black-shadow); --box-shadow-white-glow: 0 0 15px var(--white-shadow);
+
+    /* Borders */
+    --border-width-thin: 1px;
+    --border-width-medium: 2px;
+    --border-width-thick: 3px;
+
+    /* Border radius */
+    --border-radius-small: 1rem;
+    --border-radius-medium: 2rem;
+    --border-radius-large: 3rem;
+
+    /* Spacing */
+    --gap-small: 0.25rem;
+    --gap-medium: 0.5rem;
+    --gap-large: 1rem;
+
+    --padding-small: 0.33rem;
+    --padding-medium: 0.66rem;
+    --padding-large: 1rem;
+
+    --margin-small: 1rem;
+    --margin-medium: 2rem;
+    --margin-large: 3rem;
+
+    /* Font sizes */
+    --font-size-h1: 50pt;
+    --font-size-h2: 40pt;
+    --font-size-h3: 32pt;
+    --font-size-h4: 24pt;
+    --font-size-h5: 20pt;
+    --font-size-h6: 16pt;
+
+    /* Font families */
+    --font-trade-gothic-bold: 'Trade Gothic Bold Condensed No.20', Impact, 'Arial Narrow Bold', sans-serif;
+    --font-trade-gothic: 'Trade Gothic Condensed No.18', 'Arial Narrow', sans-serif;
+    --font-sodo-sans: 'SoDo Sans', Helvetica, Arial, sans-serif;
+}
