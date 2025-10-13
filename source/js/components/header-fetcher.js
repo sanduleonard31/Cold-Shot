@@ -1,9 +1,20 @@
-const includeHeader = () => {
-    fetch("../../html/components/header.html").then(response =>{if(!response.ok){throw new Error("Network response failed");} return response.text();})
-        .then(data => {document.getElementById("header_id").innerHTML = data;})
-        .catch(error => {console.error("Error fetching the header:", error);
-            document.getElementById("header_id").innerText = "Failed to load header.";
-        });
-    }
+class MyHeader extends HTMLElement{
+    connectedCallback(){
+        // relative path from this JS file to the header HTML
+        const headerPath = '/source/html/components/header.html'
 
-document.addEventListener("DOMContentLoaded", includeHeader);
+        fetch(headerPath)
+            .then(res => {
+                if (!res.ok) throw new Error(`Failed to fetch header: ${res.status} ${res.statusText}`)
+                return res.text()
+            })
+            .then(html => this.innerHTML = html)
+            .catch(err => {
+                console.error('Error loading header:', err)
+                // Fallback content so the element isn't empty
+                this.innerHTML = '<!-- header failed to load -->'
+            })
+    }
+}
+
+customElements.define('loaded-header', MyHeader)
