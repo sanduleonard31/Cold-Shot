@@ -17,7 +17,6 @@
 
 .footer__social-link{
     display: flex;
-    flex-direction: column;
     align-items: center;
     position:relative;
     gap: var(--gap-medium);
@@ -72,7 +71,7 @@
 }
 
 .footer__link-label{
-    font-size: 0.875rem;
+    font-size: 0.7rem;
     text-align: center;
     font-weight: 500;
     color: var(--background-color);
@@ -84,12 +83,6 @@
 @media (max-width: 768px) {
     .row-display{
         flex-direction: column;
-        gap: var(--gap-medium);
-    }
-
-    .footer__social-icon{
-        height: calc(var(--footer-icon-size) * 0.8);
-        width: calc(var(--footer-icon-size) * 0.8);
     }
 
     .footer__link-label{
