@@ -1,6 +1,7 @@
 /**
  * Dynamic Content Loader
  * Automatically loads and renders sections based on folder structure and JSON data
+ * Enhanced with lazy loading for optimal performance
  */
 
 class ContentLoader {
@@ -16,6 +17,7 @@ class ContentLoader {
         this.links = {};
         this.sections = [];
         this.contentContainer = document.getElementById('content-container');
+        this.lazyLoader = null; // Will be initialized after DOM is ready
     }
 
     getCurrentMonth() {
@@ -25,10 +27,42 @@ class ContentLoader {
         return `${month}.${year}`;
     }
 
+    /**
+     * Create a lazy-loaded image element
+     */
+    createLazyImage(src, alt = '', cssClass = '') {
+        const img = document.createElement('img');
+        img.setAttribute('data-src', src);
+        img.setAttribute('alt', alt);
+        img.classList.add('lazy-image');
+        if (cssClass) {
+            img.classList.add(cssClass);
+        }
+        
+        // Add native lazy loading as fallback
+        img.setAttribute('loading', 'lazy');
+        
+        // Set a lightweight placeholder
+        if (typeof LazyLoader !== 'undefined') {
+            img.src = LazyLoader.createImagePlaceholder(400, 300);
+        }
+        
+        return img;
+    }
+
     async init() {
         try {
             // Remove loading spinner
             const loadingSpinner = this.contentContainer?.querySelector('.loading-spinner');
+            
+            // Initialize lazy loader
+            if (typeof LazyLoader !== 'undefined') {
+                this.lazyLoader = new LazyLoader({
+                    rootMargin: '100px',
+                    threshold: 0.01
+                });
+                this.lazyLoader.init();
+            }
             
             // Load links
             await this.loadLinks();
@@ -43,6 +77,11 @@ class ContentLoader {
             
             // Render all sections
             await this.renderAllSections();
+            
+            // Refresh lazy loader to observe new elements
+            if (this.lazyLoader) {
+                this.lazyLoader.refresh();
+            }
             
             console.log('Content loaded successfully!');
         } catch (error) {
@@ -308,12 +347,12 @@ class ContentLoader {
             <div class="card__content">
                 <div class="card__timeline">
                     <div class="card__timeline-item">
-                        <img src="${path}/${master.thenImage}" alt="${master.name} - ${master.then}" class="card__image">
+                        <img data-src="${path}/${master.thenImage}" alt="${master.name} - ${master.then}" class="card__image lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">
                         <h4 class="card__timeline-label">${master.then}</h4>
                         <p class="card__text">${master.thenDesc}</p>
                     </div>
                     <div class="card__timeline-item">
-                        <img src="${path}/${master.nowImage}" alt="${master.name} - Now" class="card__image">
+                        <img data-src="${path}/${master.nowImage}" alt="${master.name} - Now" class="card__image lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">
                         <h4 class="card__timeline-label">Now</h4>
                         <p class="card__text">${master.nowDesc}</p>
                     </div>
@@ -332,13 +371,16 @@ class ContentLoader {
 
         // Handle different section types
         if (section.id === 'champion' && data) {
+            const imgHTML = media.images.length > 0 
+                ? `<img data-src="${path}/${media.images[0]}" alt="${data.title}" class="card__image card__image--profile lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">` 
+                : '';
             content = `
                 <div class="card__header">
                     <h3 class="card__title">${data.title || section.title}</h3>
                     <p class="card__subtitle">${data.name || ''}</p>
                 </div>
                 <div class="card__content card__content--profile">
-                    ${media.images.length > 0 ? `<img src="${path}/${media.images[0]}" alt="${data.title}" class="card__image card__image--profile">` : ''}
+                    ${imgHTML}
                     <blockquote class="card__quote card__quote--profile">
                         <p>${data.message || ''}</p>
                     </blockquote>
@@ -346,13 +388,16 @@ class ContentLoader {
                 </div>
             `;
         } else if (section.id === 'editor' && data) {
+            const imgHTML = media.images.length > 0 
+                ? `<img data-src="${path}/${media.images[0]}" alt="${data.title}" class="card__image card__image--profile lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">` 
+                : '';
             content = `
                 <div class="card__header">
                     <h3 class="card__title">${data.title || section.title}</h3>
                     <p class="card__subtitle">${data.name || ''}</p>
                 </div>
                 <div class="card__content card__content--profile">
-                    ${media.images.length > 0 ? `<img src="${path}/${media.images[0]}" alt="${data.title}" class="card__image card__image--profile">` : ''}
+                    ${imgHTML}
                     <blockquote class="card__quote card__quote--profile">
                         <p>${data.message || ''}</p>
                     </blockquote>
@@ -361,6 +406,9 @@ class ContentLoader {
             `;
         } else if (section.id === 'knowledge-bites' && data) {
             const bites = data.bites || [];
+            const imgHTML = media.images.length > 0 
+                ? `<img data-src="${path}/${media.images[0]}" alt="${section.title}" class="card__image lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">` 
+                : '';
             content = `
                 <div class="card__header">
                     <h3 class="card__title">${data.title || section.title}</h3>
@@ -368,7 +416,7 @@ class ContentLoader {
                 <div class="card__content">
                     ${media.images.length > 0 ? `
                     <div class="card__media-text-wrapper">
-                        <img src="${path}/${media.images[0]}" alt="${section.title}" class="card__image">
+                        ${imgHTML}
                         <div class="card__text">
                             <ul class="knowledge-bites-list">
                                 ${bites.map(bite => `<li>${bite}</li>`).join('')}
@@ -383,6 +431,9 @@ class ContentLoader {
                 </div>
             `;
         } else if (section.id === 'spread-kindness' && data) {
+            const imgHTML = media.images.length > 0 
+                ? `<img data-src="${path}/${media.images[0]}" alt="${section.title}" class="card__image lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">` 
+                : '';
             content = `
                 <div class="card__header">
                     <h3 class="card__title">${data.title || section.title}</h3>
@@ -390,7 +441,7 @@ class ContentLoader {
                 <div class="card__content">
                     ${media.images.length > 0 ? `
                     <div class="card__media-text-wrapper">
-                        <img src="${path}/${media.images[0]}" alt="${section.title}" class="card__image">
+                        ${imgHTML}
                         <div class="card__text">
                             <p>${data.content || ''}</p>
                         </div>
@@ -401,13 +452,16 @@ class ContentLoader {
                 </div>
             `;
         } else if (section.id === 'master-speaks' && data) {
+            const imgHTML = media.images.length > 0 
+                ? `<img data-src="${path}/${media.images[0]}" alt="${data.name}" class="card__image card__image--profile lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">` 
+                : '';
             content = `
                 <div class="card__header">
                     <h3 class="card__title">${section.title}</h3>
                     <p class="card__subtitle">${data.name || ''}</p>
                 </div>
                 <div class="card__content card__content--profile">
-                    ${media.images.length > 0 ? `<img src="${path}/${media.images[0]}" alt="${data.name}" class="card__image card__image--profile">` : ''}
+                    ${imgHTML}
                     <blockquote class="card__quote card__quote--profile">
                         <p>${data.message || ''}</p>
                     </blockquote>
@@ -415,30 +469,36 @@ class ContentLoader {
                 </div>
             `;
         } else if (section.id === 'matcha-zone' && data) {
+            const imgHTML = media.images.length > 0 
+                ? `<img data-src="${path}/${media.images[0]}" alt="${section.title}" class="card__image lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">` 
+                : '';
             content = `
                 <div class="card__header">
                     <h3 class="card__title">${data.title || section.title}</h3>
                 </div>
                 <div class="card__content">
                     <div class="card__media-text-wrapper">
-                        ${media.images.length > 0 ? `<img src="${path}/${media.images[0]}" alt="${section.title}" class="card__image">` : ''}
+                        ${imgHTML}
                         <div class="card__text">
                             ${data.description ? `<p>${data.description}</p>` : ''}
-                            ${media.pdfs.length > 0 ? `<a href="${path}/${media.pdfs[0]}" class="card__pdf-link" target="_blank">📄 Read More</a>` : ''}
                             ${this.links['matcha-instagram'] ? `<a href="${this.links['matcha-instagram']}" class="card__link" target="_blank" rel="noopener noreferrer">Follow Matcha Zone</a>` : ''}
+                            ${media.pdfs.length > 0 ? `<a href="${path}/${media.pdfs[0]}" class="card__pdf-link" target="_blank">📄 Read More</a>` : ''}
                         </div>
                     </div>
                 </div>
             `;
         } else {
             // Generic card template
+            const imgHTML = media.images.length > 0 
+                ? `<img data-src="${path}/${media.images[0]}" alt="${section.title}" class="card__image lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">` 
+                : '';
             content = `
                 <div class="card__header">
                     <h3 class="card__title">${section.title}</h3>
                 </div>
                 <div class="card__content">
                     <div class="card__media-text-wrapper">
-                        ${media.images.length > 0 ? `<img src="${path}/${media.images[0]}" alt="${section.title}" class="card__image">` : ''}
+                        ${imgHTML}
                         <div class="card__text">
                             <p>${section.description}</p>
                             ${media.pdfs.length > 0 ? `<a href="${path}/${media.pdfs[0]}" class="card__pdf-link" target="_blank">📄 View Document</a>` : ''}
@@ -553,13 +613,16 @@ class ContentLoader {
         // Create project card
         const card = document.createElement('article');
         card.className = `card card--${theme}`;
+        const imgHTML = media.images.length > 0 
+            ? `<img data-src="${project.path}/${media.images[0]}" alt="${project.name}" class="card__image lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">` 
+            : '';
         card.innerHTML = `
             <div class="card__header">
                 <h3 class="card__title">${project.data.title || project.name}</h3>
             </div>
             <div class="card__content">
                 <div class="card__media-text-wrapper">
-                    ${media.images.length > 0 ? `<img src="${project.path}/${media.images[0]}" alt="${project.name}" class="card__image">` : ''}
+                    ${imgHTML}
                     <div class="card__text">
                         ${project.data.description ? `<p>${project.data.description}</p>` : ''}
                         ${media.pdfs.length > 0 ? `<a href="${project.path}/${media.pdfs[0]}" class="card__pdf-link" target="_blank">📄 View Project PDF</a>` : ''}
@@ -569,6 +632,11 @@ class ContentLoader {
         `;
 
         container.appendChild(card);
+
+        // Refresh lazy loader for new images
+        if (this.lazyLoader) {
+            this.lazyLoader.refresh();
+        }
 
         // Smooth scroll to card
         card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -584,6 +652,9 @@ class ContentLoader {
         for (const item of featuredItems) {
             const card = document.createElement('article');
             card.className = `card card--${section.theme}`;
+            const imgHTML = item.media.images.length > 0 
+                ? `<img data-src="${item.path}/${item.media.images[0]}" alt="${item.name}" class="card__image lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">` 
+                : '';
             
             card.innerHTML = `
                 <div class="card__header">
@@ -591,7 +662,7 @@ class ContentLoader {
                 </div>
                 <div class="card__content">
                     <div class="card__media-text-wrapper">
-                        ${item.media.images.length > 0 ? `<img src="${item.path}/${item.media.images[0]}" alt="${item.name}" class="card__image">` : ''}
+                        ${imgHTML}
                         <div class="card__text">
                             ${item.data.description ? `<p>${item.data.description}</p>` : ''}
                             ${item.media.pdfs.length > 0 ? `<a href="${item.path}/${item.media.pdfs[0]}" class="card__pdf-link" target="_blank">📄 Learn More</a>` : ''}
@@ -608,7 +679,51 @@ class ContentLoader {
 
     async loadFeaturedItems(path) {
         const items = [];
-        const commonFolders = ['launch', 'announcement', 'event', 'special', 'news'];
+        
+        // Try to load a featured-items.json manifest file first
+        try {
+            const manifestResponse = await fetch(`${path}/featured-items.json`);
+            if (manifestResponse.ok) {
+                const manifest = await manifestResponse.json();
+                const folders = manifest.folders || manifest.items || [];
+                
+                for (const folder of folders) {
+                    try {
+                        const itemPath = `${path}/${folder}`;
+                        const response = await fetch(`${itemPath}/text.json`);
+                        
+                        if (response.ok) {
+                            const data = await response.json();
+                            const media = await this.detectMedia(itemPath, 'featured');
+                            
+                            items.push({
+                                name: folder,
+                                data: data,
+                                media: media,
+                                path: itemPath
+                            });
+                        }
+                    } catch (error) {
+                        console.warn(`Could not load featured item: ${folder}`, error);
+                    }
+                }
+                
+                return items;
+            }
+        } catch (error) {
+            // No manifest file, fall back to discovery approach
+            console.log('No featured-items.json manifest found, trying common folder names...');
+        }
+
+        // Fallback: Try common folder names and any numbered folders
+        const commonFolders = ['launch', 'announcement', 'event', 'special', 'news', 'update', 'feature', 'story', 'spotlight'];
+        
+        // Also try numbered folders (featured-1, featured-2, etc.)
+        for (let i = 1; i <= 20; i++) {
+            commonFolders.push(`featured-${i}`);
+            commonFolders.push(`item-${i}`);
+            commonFolders.push(`${i}`);
+        }
 
         for (const folder of commonFolders) {
             try {
@@ -627,7 +742,7 @@ class ContentLoader {
                     });
                 }
             } catch (error) {
-                // Folder doesn't exist, continue
+                // Folder doesn't exist, continue silently
             }
         }
 

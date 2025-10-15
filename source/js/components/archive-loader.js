@@ -11,6 +11,7 @@ class ArchiveLoader {
         this.selectedSection = 'all';
         this.allContent = [];
         this.links = {};
+        this.lazyLoader = null;
         
         this.monthSelector = document.getElementById('month-selector');
         this.sectionSelector = document.getElementById('section-selector');
@@ -19,6 +20,15 @@ class ArchiveLoader {
 
     async init() {
         try {
+            // Initialize lazy loader
+            if (typeof LazyLoader !== 'undefined') {
+                this.lazyLoader = new LazyLoader({
+                    rootMargin: '100px',
+                    threshold: 0.01
+                });
+                this.lazyLoader.init();
+            }
+            
             // Load links
             await this.loadLinks();
             
@@ -36,6 +46,11 @@ class ArchiveLoader {
             
             // Initial render
             this.renderArchive();
+            
+            // Refresh lazy loader for new elements
+            if (this.lazyLoader) {
+                this.lazyLoader.refresh();
+            }
             
             console.log('Archive loaded successfully!');
         } catch (error) {
@@ -230,7 +245,53 @@ class ArchiveLoader {
 
     async loadFeaturedContent(path) {
         const items = [];
-        const commonFolders = ['launch', 'announcement', 'event', 'special', 'news'];
+        
+        // Try to load a featured-items.json manifest file first
+        try {
+            const manifestResponse = await fetch(`${path}/featured-items.json`);
+            if (manifestResponse.ok) {
+                const manifest = await manifestResponse.json();
+                const folders = manifest.folders || manifest.items || [];
+                
+                for (const folder of folders) {
+                    try {
+                        const itemPath = `${path}/${folder}`;
+                        const response = await fetch(`${itemPath}/text.json`);
+                        
+                        if (response.ok) {
+                            const data = await response.json();
+                            const media = await this.detectMedia(itemPath, 'featured');
+                            
+                            items.push({
+                                id: folder,
+                                data: data,
+                                media: media,
+                                path: itemPath
+                            });
+                        }
+                    } catch (error) {
+                        console.warn(`Could not load featured item: ${folder}`, error);
+                    }
+                }
+                
+                // Return items if manifest was found and processed
+                if (items.length === 0) return null;
+                return { items: items };
+            }
+        } catch (error) {
+            // No manifest file, fall back to discovery approach
+            console.log('No featured-items.json manifest found in archive, trying common folder names...');
+        }
+
+        // Fallback: Try common folder names and any numbered folders
+        const commonFolders = ['launch', 'announcement', 'event', 'special', 'news', 'update', 'feature', 'story', 'spotlight'];
+        
+        // Also try numbered folders (featured-1, featured-2, etc.)
+        for (let i = 1; i <= 20; i++) {
+            commonFolders.push(`featured-${i}`);
+            commonFolders.push(`item-${i}`);
+            commonFolders.push(`${i}`);
+        }
 
         for (const folder of commonFolders) {
             try {
@@ -249,7 +310,7 @@ class ArchiveLoader {
                     });
                 }
             } catch (error) {
-                // Folder doesn't exist, continue
+                // Folder doesn't exist, continue silently
             }
         }
 
@@ -364,6 +425,11 @@ class ArchiveLoader {
                 }
             });
         });
+        
+        // Refresh lazy loader for new images
+        if (this.lazyLoader) {
+            this.lazyLoader.refresh();
+        }
     }
 
     renderSection(item) {
@@ -465,12 +531,12 @@ class ArchiveLoader {
                     <div class="archive-card__content">
                         <div class="archive-card__timeline">
                             <div class="archive-card__timeline-item">
-                                <img src="${path}/${master.thenImage}" alt="${master.name} - ${master.then}" class="archive-card__image">
+                                ${this.createLazyImageHTML(`${path}/${master.thenImage}`, `${master.name} - ${master.then}`)}
                                 <h4 class="archive-card__timeline-label">${master.then}</h4>
                                 <p class="archive-card__text">${master.thenDesc}</p>
                             </div>
                             <div class="archive-card__timeline-item">
-                                <img src="${path}/${master.nowImage}" alt="${master.name} - Now" class="archive-card__image">
+                                ${this.createLazyImageHTML(`${path}/${master.nowImage}`, `${master.name} - Now`)}
                                 <h4 class="archive-card__timeline-label">Now</h4>
                                 <p class="archive-card__text">${master.nowDesc}</p>
                             </div>
@@ -503,12 +569,25 @@ class ArchiveLoader {
         return masters;
     }
 
+    /**
+     * Create lazy-loaded image HTML
+     */
+    createLazyImageHTML(src, alt = '', cssClass = 'archive-card__image') {
+        const placeholder = typeof LazyLoader !== 'undefined' 
+            ? LazyLoader.createImagePlaceholder(400, 300) 
+            : '';
+        return `<img data-src="${src}" alt="${alt}" class="${cssClass} lazy-image" loading="lazy" src="${placeholder}">`;
+    }
+
     renderProjectsSection(section, content, path, monthLabel) {
         // If we have multiple projects, render them all
         if (content.projects && content.projects.length > 0) {
             let projectsHTML = '';
             
             content.projects.forEach(project => {
+                const imgHTML = project.media.images.length > 0 
+                    ? this.createLazyImageHTML(`${project.path}/${project.media.images[0]}`, project.data.title) 
+                    : '';
                 projectsHTML += `
                     <div class="archive-card archive-card--${section.theme} archive-section--projects">
                         <div class="archive-card__header">
@@ -516,7 +595,7 @@ class ArchiveLoader {
                             <span class="archive-card__date">${monthLabel}</span>
                         </div>
                         <div class="archive-card__content archive-card__content--project">
-                            ${project.media.images.length > 0 ? `<img src="${project.path}/${project.media.images[0]}" alt="${project.data.title}" class="archive-card__image">` : ''}
+                            ${imgHTML}
                             <div class="archive-card__text-group">
                                 <p class="archive-card__text">${project.data.description || ''}</p>
                                 ${project.media.pdfs.length > 0 ? `<a href="${project.path}/${project.media.pdfs[0]}" class="archive-card__button" target="_blank">📄 View PDF</a>` : ''}
@@ -532,6 +611,9 @@ class ArchiveLoader {
         // Fallback for single project
         const data = content.data;
         const media = content.media;
+        const imgHTML = media.images.length > 0 
+            ? this.createLazyImageHTML(`${path}/${media.images[0]}`, data.title) 
+            : '';
         
         return `
             <div class="archive-card archive-card--${section.theme}">
@@ -540,7 +622,7 @@ class ArchiveLoader {
                     <span class="archive-card__date">${monthLabel}</span>
                 </div>
                 <div class="archive-card__content archive-card__content--project">
-                    ${media.images.length > 0 ? `<img src="${path}/${media.images[0]}" alt="${data.title}" class="archive-card__image">` : ''}
+                    ${imgHTML}
                     <div class="archive-card__text-group">
                         <p class="archive-card__text">${data.description || ''}</p>
                         ${media.pdfs.length > 0 ? `<a href="${path}/${media.pdfs[0]}" class="archive-card__button" target="_blank">📄 View PDF</a>` : ''}
@@ -556,6 +638,9 @@ class ArchiveLoader {
             let itemsHTML = '';
             
             content.items.forEach(item => {
+                const imgHTML = item.media.images.length > 0 
+                    ? this.createLazyImageHTML(`${item.path}/${item.media.images[0]}`, item.data.title) 
+                    : '';
                 itemsHTML += `
                     <div class="archive-card archive-card--${section.theme}">
                         <div class="archive-card__header">
@@ -563,7 +648,7 @@ class ArchiveLoader {
                             <span class="archive-card__date">${monthLabel}</span>
                         </div>
                         <div class="archive-card__content archive-card__content--project">
-                            ${item.media.images.length > 0 ? `<img src="${item.path}/${item.media.images[0]}" alt="${item.data.title}" class="archive-card__image">` : ''}
+                            ${imgHTML}
                             <div class="archive-card__text-group">
                                 <p class="archive-card__text">${item.data.description || ''}</p>
                                 ${item.media.pdfs.length > 0 ? `<a href="${item.path}/${item.media.pdfs[0]}" class="archive-card__button" target="_blank">📄 Read More</a>` : ''}
@@ -579,6 +664,9 @@ class ArchiveLoader {
         // Fallback for single media item
         const data = content.data;
         const media = content.media;
+        const imgHTML = media.images.length > 0 
+            ? this.createLazyImageHTML(`${path}/${media.images[0]}`, data.title) 
+            : '';
         
         return `
             <div class="archive-card archive-card--${section.theme}">
@@ -587,7 +675,7 @@ class ArchiveLoader {
                     <span class="archive-card__date">${monthLabel}</span>
                 </div>
                 <div class="archive-card__content archive-card__content--project">
-                    ${media.images.length > 0 ? `<img src="${path}/${media.images[0]}" alt="${data.title}" class="archive-card__image">` : ''}
+                    ${imgHTML}
                     <div class="archive-card__text-group">
                         <p class="archive-card__text">${data.description || ''}</p>
                         ${media.pdfs.length > 0 ? `<a href="${path}/${media.pdfs[0]}" class="archive-card__button" target="_blank">📄 Read More</a>` : ''}
@@ -601,6 +689,9 @@ class ArchiveLoader {
         const data = content.data;
         const media = content.media;
         const bites = data.bites || [];
+        const imgHTML = media.images.length > 0 
+            ? this.createLazyImageHTML(`${path}/${media.images[0]}`, section.title) 
+            : '';
         
         return `
             <div class="archive-card archive-card--${section.theme}">
@@ -609,7 +700,7 @@ class ArchiveLoader {
                     <span class="archive-card__date">${monthLabel}</span>
                 </div>
                 <div class="archive-card__content ${media.images.length > 0 ? 'archive-card__content--project' : ''}">
-                    ${media.images.length > 0 ? `<img src="${path}/${media.images[0]}" alt="${section.title}" class="archive-card__image">` : ''}
+                    ${imgHTML}
                     ${media.images.length > 0 ? '<div class="archive-card__text-group">' : ''}
                         <ul class="archive-card__list">
                             ${bites.map(bite => `<li>${bite}</li>`).join('')}
@@ -623,6 +714,9 @@ class ArchiveLoader {
     renderSpreadKindnessSection(section, content, path, monthLabel) {
         const data = content.data;
         const media = content.media;
+        const imgHTML = media.images.length > 0 
+            ? this.createLazyImageHTML(`${path}/${media.images[0]}`, section.title) 
+            : '';
         
         return `
             <div class="archive-card archive-card--${section.theme}">
@@ -631,7 +725,7 @@ class ArchiveLoader {
                     <span class="archive-card__date">${monthLabel}</span>
                 </div>
                 <div class="archive-card__content ${media.images.length > 0 ? 'archive-card__content--project' : ''}">
-                    ${media.images.length > 0 ? `<img src="${path}/${media.images[0]}" alt="${section.title}" class="archive-card__image">` : ''}
+                    ${imgHTML}
                     ${media.images.length > 0 ? '<div class="archive-card__text-group">' : ''}
                         <p class="archive-card__text">${data.content || ''}</p>
                     ${media.images.length > 0 ? '</div>' : ''}

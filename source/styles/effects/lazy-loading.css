@@ -1,0 +1,205 @@
+/**
+ * Lazy Loading Effects
+ * Styles for lazy loaded images and content sections
+ */
+
+/* Lazy loading states for images */
+.lazy-image {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    will-change: opacity, transform;
+}
+
+.lazy-image.lazy-loading {
+    opacity: 0.5;
+    background-color: var(--color-background-secondary, #f0f0f0);
+    background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+.lazy-image.lazy-loaded {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.lazy-image.lazy-error {
+    opacity: 0.3;
+    background-color: var(--color-error, #ff4444);
+    position: relative;
+}
+
+.lazy-image.lazy-error::after {
+    content: '⚠️';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+}
+
+/* Shimmer animation for loading state */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Lazy loading states for sections */
+.lazy-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    will-change: opacity, transform;
+}
+
+.lazy-section.lazy-loading {
+    opacity: 0.7;
+}
+
+.lazy-section.lazy-loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.lazy-section.lazy-error {
+    opacity: 0.5;
+    border: 2px dashed var(--color-error, #ff4444);
+    padding: 1rem;
+}
+
+/* Progressive blur-up effect for images */
+.lazy-image.blur-up {
+    filter: blur(10px);
+    transition: filter 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+.lazy-image.blur-up.lazy-loaded {
+    filter: blur(0);
+}
+
+/* Fade-in animation variants */
+.lazy-fade-in {
+    animation: lazyFadeIn 0.5s ease-out forwards;
+}
+
+@keyframes lazyFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Slide-in animation for cards */
+.lazy-slide-in {
+    animation: lazySlideIn 0.6s ease-out forwards;
+}
+
+@keyframes lazySlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Scale-in animation for media */
+.lazy-scale-in {
+    animation: lazyScaleIn 0.5s ease-out forwards;
+}
+
+@keyframes lazyScaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Loading skeleton for cards */
+.card.lazy-loading .card__content {
+    min-height: 200px;
+    background: linear-gradient(
+        90deg,
+        var(--color-background-secondary, #f0f0f0) 25%,
+        var(--color-background-light, #f8f8f8) 50%,
+        var(--color-background-secondary, #f0f0f0) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
+}
+
+/* Lazy loading spinner */
+.lazy-spinner {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--color-primary, #4a90e2);
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .lazy-image,
+    .lazy-section,
+    .lazy-fade-in,
+    .lazy-slide-in,
+    .lazy-scale-in {
+        animation: none;
+        transition: none;
+    }
+    
+    .lazy-image.lazy-loaded {
+        opacity: 1;
+        transform: none;
+    }
+    
+    .lazy-section.lazy-loaded {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Performance optimizations */
+.lazy-image,
+.lazy-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 300px;
+}
+
+/* Native lazy loading support (fallback) */
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+img[loading="lazy"].loaded {
+    opacity: 1;
+}

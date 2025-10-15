@@ -11,6 +11,7 @@
 @import "./effects/animations.css";
 @import "./effects/styling.css";
 @import "./effects/page-change.css";
+@import "./effects/lazy-loading.css";
 @import "./elements/footer.css";
 @import "./elements/header.css";
 @import "./utils/reset.css";
