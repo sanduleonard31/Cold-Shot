@@ -339,11 +339,11 @@ class ContentLoader {
                 </div>
                 <div class="card__content card__content--profile">
                     ${media.images.length > 0 ? `<img src="${path}/${media.images[0]}" alt="${data.title}" class="card__image card__image--profile">` : ''}
-                    <blockquote class="card__quote">
+                    <blockquote class="card__quote card__quote--profile">
                         <p>${data.message || ''}</p>
                     </blockquote>
+                    ${this.links['champion-instagram'] ? `<a href="${this.links['champion-instagram']}" class="card__link" target="_blank" rel="noopener noreferrer">Follow on Instagram</a>` : ''}
                 </div>
-                ${this.links['champion-instagram'] ? `<a href="${this.links['champion-instagram']}" class="card__link" target="_blank" rel="noopener noreferrer">Follow on Instagram</a>` : ''}
             `;
         } else if (section.id === 'editor' && data) {
             content = `
@@ -353,11 +353,11 @@ class ContentLoader {
                 </div>
                 <div class="card__content card__content--profile">
                     ${media.images.length > 0 ? `<img src="${path}/${media.images[0]}" alt="${data.title}" class="card__image card__image--profile">` : ''}
-                    <blockquote class="card__quote">
+                    <blockquote class="card__quote card__quote--profile">
                         <p>${data.message || ''}</p>
                     </blockquote>
+                    ${this.links['editor-instagram'] ? `<a href="${this.links['editor-instagram']}" class="card__link" target="_blank" rel="noopener noreferrer">Connect with Editor</a>` : ''}
                 </div>
-                ${this.links['editor-instagram'] ? `<a href="${this.links['editor-instagram']}" class="card__link" target="_blank" rel="noopener noreferrer">Connect with Editor</a>` : ''}
             `;
         } else if (section.id === 'knowledge-bites' && data) {
             const bites = data.bites || [];
@@ -366,9 +366,20 @@ class ContentLoader {
                     <h3 class="card__title">${data.title || section.title}</h3>
                 </div>
                 <div class="card__content">
+                    ${media.images.length > 0 ? `
+                    <div class="card__media-text-wrapper">
+                        <img src="${path}/${media.images[0]}" alt="${section.title}" class="card__image">
+                        <div class="card__text">
+                            <ul class="knowledge-bites-list">
+                                ${bites.map(bite => `<li>${bite}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    ` : `
                     <ul class="knowledge-bites-list">
                         ${bites.map(bite => `<li>${bite}</li>`).join('')}
                     </ul>
+                    `}
                 </div>
             `;
         } else if (section.id === 'spread-kindness' && data) {
@@ -377,7 +388,16 @@ class ContentLoader {
                     <h3 class="card__title">${data.title || section.title}</h3>
                 </div>
                 <div class="card__content">
+                    ${media.images.length > 0 ? `
+                    <div class="card__media-text-wrapper">
+                        <img src="${path}/${media.images[0]}" alt="${section.title}" class="card__image">
+                        <div class="card__text">
+                            <p>${data.content || ''}</p>
+                        </div>
+                    </div>
+                    ` : `
                     <p>${data.content || ''}</p>
+                    `}
                 </div>
             `;
         } else if (section.id === 'master-speaks' && data) {
@@ -386,11 +406,12 @@ class ContentLoader {
                     <h3 class="card__title">${section.title}</h3>
                     <p class="card__subtitle">${data.name || ''}</p>
                 </div>
-                <div class="card__content card__content--master-speaks">
-                    ${media.images.length > 0 ? `<img src="${path}/${media.images[0]}" alt="${data.name}" class="card__image card__image--master">` : ''}
-                    <blockquote class="card__quote">
+                <div class="card__content card__content--profile">
+                    ${media.images.length > 0 ? `<img src="${path}/${media.images[0]}" alt="${data.name}" class="card__image card__image--profile">` : ''}
+                    <blockquote class="card__quote card__quote--profile">
                         <p>${data.message || ''}</p>
                     </blockquote>
+                    ${this.links['coffee-master-apply'] ? `<a href="${this.links['coffee-master-apply']}" class="card__link" target="_blank" rel="noopener noreferrer">Become a Coffee Master</a>` : ''}
                 </div>
             `;
         } else if (section.id === 'matcha-zone' && data) {
@@ -401,11 +422,13 @@ class ContentLoader {
                 <div class="card__content">
                     <div class="card__media-text-wrapper">
                         ${media.images.length > 0 ? `<img src="${path}/${media.images[0]}" alt="${section.title}" class="card__image">` : ''}
-                        ${data.description ? `<div class="card__text"><p>${data.description}</p></div>` : ''}
+                        <div class="card__text">
+                            ${data.description ? `<p>${data.description}</p>` : ''}
+                            ${media.pdfs.length > 0 ? `<a href="${path}/${media.pdfs[0]}" class="card__pdf-link" target="_blank">📄 Read More</a>` : ''}
+                            ${this.links['matcha-instagram'] ? `<a href="${this.links['matcha-instagram']}" class="card__link" target="_blank" rel="noopener noreferrer">Follow Matcha Zone</a>` : ''}
+                        </div>
                     </div>
-                    ${media.pdfs.length > 0 ? `<a href="${path}/${media.pdfs[0]}" class="card__pdf-link" target="_blank">📄 Read More</a>` : ''}
                 </div>
-                ${this.links['matcha-instagram'] ? `<a href="${this.links['matcha-instagram']}" class="card__link" target="_blank" rel="noopener noreferrer">Follow Matcha Zone</a>` : ''}
             `;
         } else {
             // Generic card template
@@ -418,9 +441,9 @@ class ContentLoader {
                         ${media.images.length > 0 ? `<img src="${path}/${media.images[0]}" alt="${section.title}" class="card__image">` : ''}
                         <div class="card__text">
                             <p>${section.description}</p>
+                            ${media.pdfs.length > 0 ? `<a href="${path}/${media.pdfs[0]}" class="card__pdf-link" target="_blank">📄 View Document</a>` : ''}
                         </div>
                     </div>
-                    ${media.pdfs.length > 0 ? `<a href="${path}/${media.pdfs[0]}" class="card__pdf-link" target="_blank">📄 View Document</a>` : ''}
                 </div>
             `;
         }
@@ -535,9 +558,13 @@ class ContentLoader {
                 <h3 class="card__title">${project.data.title || project.name}</h3>
             </div>
             <div class="card__content">
-                ${project.data.description ? `<p>${project.data.description}</p>` : ''}
-                ${media.images.length > 0 ? `<img src="${project.path}/${media.images[0]}" alt="${project.name}" class="card__image">` : ''}
-                ${media.pdfs.length > 0 ? `<a href="${project.path}/${media.pdfs[0]}" class="card__pdf-link" target="_blank">📄 View Project PDF</a>` : ''}
+                <div class="card__media-text-wrapper">
+                    ${media.images.length > 0 ? `<img src="${project.path}/${media.images[0]}" alt="${project.name}" class="card__image">` : ''}
+                    <div class="card__text">
+                        ${project.data.description ? `<p>${project.data.description}</p>` : ''}
+                        ${media.pdfs.length > 0 ? `<a href="${project.path}/${media.pdfs[0]}" class="card__pdf-link" target="_blank">📄 View Project PDF</a>` : ''}
+                    </div>
+                </div>
             </div>
         `;
 
@@ -563,9 +590,13 @@ class ContentLoader {
                     <h3 class="card__title">${item.data.title || item.name}</h3>
                 </div>
                 <div class="card__content">
-                    ${item.data.description ? `<p>${item.data.description}</p>` : ''}
-                    ${item.media.images.length > 0 ? `<img src="${item.path}/${item.media.images[0]}" alt="${item.name}" class="card__image">` : ''}
-                    ${item.media.pdfs.length > 0 ? `<a href="${item.path}/${item.media.pdfs[0]}" class="card__pdf-link" target="_blank">📄 Learn More</a>` : ''}
+                    <div class="card__media-text-wrapper">
+                        ${item.media.images.length > 0 ? `<img src="${item.path}/${item.media.images[0]}" alt="${item.name}" class="card__image">` : ''}
+                        <div class="card__text">
+                            ${item.data.description ? `<p>${item.data.description}</p>` : ''}
+                            ${item.media.pdfs.length > 0 ? `<a href="${item.path}/${item.media.pdfs[0]}" class="card__pdf-link" target="_blank">📄 Learn More</a>` : ''}
+                        </div>
+                    </div>
                 </div>
             `;
             

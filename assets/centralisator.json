@@ -1,411 +1,1558 @@
 {
-  "metadata": {
-    "lastUpdated": "2025-10-15",
-    "version": "1.0",
-    "certificationValidityYears": 2,
-    "description": "Coffee Masters Store Centralization Data"
-  },
   "districts": [
     {
-      "id": "district-1",
-      "name": "Downtown District",
-      "code": "DD",
+      "id": "district-ro1",
+      "name": "District RO1",
+      "code": "RO1",
       "stores": [
         {
-          "id": "store-dd-001",
-          "name": "Main Street Coffeehouse",
-          "code": "DD001",
-          "address": "123 Main Street",
+          "id": "store-ro1-001",
+          "name": "SBX Afi Mall Arad",
+          "code": "RO1001",
+          "address": "",
           "storeLeader": {
-            "name": "Elena Rodriguez",
+            "name": "Galatan Andrei Vlad",
             "role": "Store Manager",
-            "employmentDate": "2021-03-15",
-            "certificationDate": "2023-03-15",
+            "employmentDate": null,
+            "certificationDate": null,
             "isCertified": true,
-            "certificationExpiry": "2025-03-15"
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro1-002",
+          "name": "SBX Vivo Baia Mare",
+          "code": "RO1002",
+          "address": "",
+          "storeLeader": {
+            "name": "Teanc Ana Diana",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
           },
           "masters": [
             {
-              "name": "Sarah Mitchell",
-              "employmentDate": "2022-01-10",
-              "certificationDate": "2024-01-10",
+              "name": "Vasvari Stefania",
+              "employmentDate": null,
+              "certificationDate": null,
               "isCertified": true,
-              "certificationExpiry": "2026-01-10"
-            },
-            {
-              "name": "David Chen",
-              "employmentDate": "2022-06-20",
-              "certificationDate": "2024-06-20",
-              "isCertified": true,
-              "certificationExpiry": "2026-06-20"
-            },
-            {
-              "name": "Maria Santos",
-              "employmentDate": "2023-09-01",
-              "certificationDate": "2025-09-01",
-              "isCertified": false,
-              "certificationExpiry": "2027-09-01"
+              "certificationExpiry": null
             }
           ]
         },
         {
-          "id": "store-dd-002",
-          "name": "Central Hub Café",
-          "code": "DD002",
-          "address": "456 Central Avenue",
+          "id": "store-ro1-003",
+          "name": "SBX Lotus Oradea",
+          "code": "RO1003",
+          "address": "",
           "storeLeader": {
-            "name": "James Thompson",
+            "name": "Teusdea Simina",
             "role": "Store Manager",
-            "employmentDate": "2020-11-05",
-            "certificationDate": "2022-11-05",
+            "employmentDate": null,
+            "certificationDate": null,
             "isCertified": true,
-            "certificationExpiry": "2024-11-05"
+            "certificationExpiry": null
           },
           "masters": [
             {
-              "name": "Lisa Anderson",
-              "employmentDate": "2021-08-15",
-              "certificationDate": "2023-08-15",
+              "name": "Vasadi Patricia",
+              "employmentDate": null,
+              "certificationDate": null,
               "isCertified": true,
-              "certificationExpiry": "2025-08-15"
-            },
-            {
-              "name": "Kevin Park",
-              "employmentDate": "2023-02-28",
-              "certificationDate": "2025-02-28",
-              "isCertified": false,
-              "certificationExpiry": "2027-02-28"
-            },
-            {
-              "name": "Emma Wilson",
-              "employmentDate": "2023-07-12",
-              "certificationDate": "2025-07-12",
-              "isCertified": false,
-              "certificationExpiry": "2027-07-12"
-            },
-            {
-              "name": "Ryan Foster",
-              "employmentDate": "2022-04-03",
-              "certificationDate": "2024-04-03",
-              "isCertified": true,
-              "certificationExpiry": "2026-04-03"
+              "certificationExpiry": null
             }
           ]
         },
         {
-          "id": "store-dd-003",
-          "name": "Plaza Coffee House",
-          "code": "DD003",
-          "address": "789 Plaza Boulevard",
+          "id": "store-ro1-004",
+          "name": "SBX Iulius Mall Timisoara",
+          "code": "RO1004",
+          "address": "",
           "storeLeader": {
-            "name": "Sophia Lee",
+            "name": "Popescu Madalina Cosmina",
             "role": "Store Manager",
-            "employmentDate": "2021-07-20",
-            "certificationDate": "2023-07-20",
+            "employmentDate": null,
+            "certificationDate": null,
             "isCertified": true,
-            "certificationExpiry": "2025-07-20"
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro1-005",
+          "name": "SBX Shopping City Timisoara",
+          "code": "RO1005",
+          "address": "",
+          "storeLeader": {
+            "name": "Grigoras Daniela",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
           },
           "masters": [
             {
-              "name": "Michael Brown",
-              "employmentDate": "2022-11-01",
-              "certificationDate": "2024-11-01",
+              "name": "Pop Iasmina",
+              "employmentDate": null,
+              "certificationDate": null,
               "isCertified": true,
-              "certificationExpiry": "2026-11-01"
+              "certificationExpiry": null
             },
             {
-              "name": "Ashley Davis",
-              "employmentDate": "2023-05-15",
-              "certificationDate": "2025-05-15",
-              "isCertified": false,
-              "certificationExpiry": "2027-05-15"
+              "name": "Grigoras Daniela",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro1-006",
+          "name": "SBX Piata Victoriei Timisoara",
+          "code": "RO1006",
+          "address": "",
+          "storeLeader": {
+            "name": "Maris Ioana Roxana",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Comlosan Deian",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Spreodi Agi",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
             }
           ]
         }
       ]
     },
     {
-      "id": "district-2",
-      "name": "Riverside District",
-      "code": "RD",
+      "id": "district-ro2",
+      "name": "District RO2",
+      "code": "RO2",
       "stores": [
         {
-          "id": "store-rd-001",
-          "name": "Riverside Roastery",
-          "code": "RD001",
-          "address": "12 River Road",
+          "id": "store-ro2-001",
+          "name": "SBX Day Tower Bucuresti",
+          "code": "RO2001",
+          "address": "",
           "storeLeader": {
-            "name": "Oliver Martinez",
+            "name": "Dumitru Trica Diana",
             "role": "Store Manager",
-            "employmentDate": "2020-05-10",
-            "certificationDate": "2022-05-10",
+            "employmentDate": null,
+            "certificationDate": null,
             "isCertified": true,
-            "certificationExpiry": "2024-05-10"
+            "certificationExpiry": null
           },
           "masters": [
             {
-              "name": "Isabella Garcia",
-              "employmentDate": "2021-09-20",
-              "certificationDate": "2023-09-20",
+              "name": "Olariu Alexandra",
+              "employmentDate": null,
+              "certificationDate": null,
               "isCertified": true,
-              "certificationExpiry": "2025-09-20"
-            },
-            {
-              "name": "Ethan White",
-              "employmentDate": "2022-12-05",
-              "certificationDate": "2024-12-05",
-              "isCertified": true,
-              "certificationExpiry": "2026-12-05"
-            },
-            {
-              "name": "Olivia Taylor",
-              "employmentDate": "2023-03-18",
-              "certificationDate": "2025-03-18",
-              "isCertified": false,
-              "certificationExpiry": "2027-03-18"
-            },
-            {
-              "name": "Noah Johnson",
-              "employmentDate": "2023-08-22",
-              "certificationDate": "2025-08-22",
-              "isCertified": false,
-              "certificationExpiry": "2027-08-22"
-            },
-            {
-              "name": "Ava Martinez",
-              "employmentDate": "2021-11-30",
-              "certificationDate": "2023-11-30",
-              "isCertified": true,
-              "certificationExpiry": "2025-11-30"
+              "certificationExpiry": null
             }
           ]
         },
         {
-          "id": "store-rd-002",
-          "name": "Waterfront Beans",
-          "code": "RD002",
-          "address": "34 Waterfront Drive",
+          "id": "store-ro2-002",
+          "name": "SBX Gara De Nord Bucuresti",
+          "code": "RO2002",
+          "address": "",
           "storeLeader": {
-            "name": "Charlotte Moore",
+            "name": "Ruse Eugen",
             "role": "Store Manager",
-            "employmentDate": "2021-02-14",
-            "certificationDate": "2023-02-14",
+            "employmentDate": null,
+            "certificationDate": null,
             "isCertified": true,
-            "certificationExpiry": "2025-02-14"
+            "certificationExpiry": null
           },
           "masters": [
             {
-              "name": "Liam Jackson",
-              "employmentDate": "2022-05-08",
-              "certificationDate": "2024-05-08",
+              "name": "Toma Estera Elisabeta",
+              "employmentDate": null,
+              "certificationDate": null,
               "isCertified": true,
-              "certificationExpiry": "2026-05-08"
+              "certificationExpiry": null
             },
             {
-              "name": "Mia Robinson",
-              "employmentDate": "2023-01-25",
-              "certificationDate": "2025-01-25",
-              "isCertified": false,
-              "certificationExpiry": "2027-01-25"
+              "name": "Nedelcu Nelia",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro2-003",
+          "name": "SBX Universitate Bucuresti",
+          "code": "RO2003",
+          "address": "",
+          "storeLeader": {
+            "name": "Dicu Marius",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Andreea Ciuma",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Nicolae Gligor",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Roxana Manaila",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Tania Fugaru",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Dicu Marius",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Beatrice Dudau",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Alessia Eftimie",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Maria Enache",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro2-004",
+          "name": "SBX Piata Romana Bucuresti",
+          "code": "RO2004",
+          "address": "",
+          "storeLeader": {
+            "name": "Dragne Georgiana",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro2-005",
+          "name": "SBX Trivale Pitesti",
+          "code": "RO2005",
+          "address": "",
+          "storeLeader": {
+            "name": "Crivat Gabriela",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Crivat Gabriela",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Adriana Ionela",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Dobre Gabriel",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro2-006",
+          "name": "SBX Arges Mall Pitesti",
+          "code": "RO2006",
+          "address": "",
+          "storeLeader": {
+            "name": "Frigioiu Ionut",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Ioana Noaptes",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro2-007",
+          "name": "SBX Veranda Mall Bucuresti",
+          "code": "RO2007",
+          "address": "",
+          "storeLeader": {
+            "name": "Rujenescu Ionut",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro2-008",
+          "name": "SBX Lipscani Bucuresti",
+          "code": "RO2008",
+          "address": "",
+          "storeLeader": {
+            "name": "Munteanu Filip",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Filip Munteanu",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Adrian Balca",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Melisa Hazan",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Rares Nedelcu",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
             }
           ]
         }
       ]
     },
     {
-      "id": "district-3",
-      "name": "Northside District",
-      "code": "ND",
+      "id": "district-ro3",
+      "name": "District RO3",
+      "code": "RO3",
       "stores": [
         {
-          "id": "store-nd-001",
-          "name": "North Corner Café",
-          "code": "ND001",
-          "address": "567 North Avenue",
+          "id": "store-ro3-001",
+          "name": "SBX Plaza Romania Mall Bucuresti",
+          "code": "RO3001",
+          "address": "",
           "storeLeader": {
-            "name": "Benjamin Harris",
+            "name": "Stefanescu Bogdan",
             "role": "Store Manager",
-            "employmentDate": "2020-08-25",
-            "certificationDate": "2022-08-25",
+            "employmentDate": null,
+            "certificationDate": null,
             "isCertified": true,
-            "certificationExpiry": "2024-08-25"
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro3-002",
+          "name": "SBX Cotroceni Bucuresti",
+          "code": "RO3002",
+          "address": "",
+          "storeLeader": {
+            "name": "Micloi Adrian",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
           },
           "masters": [
             {
-              "name": "Emma Thompson",
-              "employmentDate": "2021-10-12",
-              "certificationDate": "2023-10-12",
+              "name": "Micloi Adrian Daniel",
+              "employmentDate": null,
+              "certificationDate": null,
               "isCertified": true,
-              "certificationExpiry": "2025-10-12"
+              "certificationExpiry": null
             },
             {
-              "name": "William Clark",
-              "employmentDate": "2022-03-30",
-              "certificationDate": "2024-03-30",
+              "name": "Vilcereanu George Gabriel",
+              "employmentDate": null,
+              "certificationDate": null,
               "isCertified": true,
-              "certificationExpiry": "2026-03-30"
-            },
-            {
-              "name": "Sophia Lewis",
-              "employmentDate": "2023-06-14",
-              "certificationDate": "2025-06-14",
-              "isCertified": false,
-              "certificationExpiry": "2027-06-14"
+              "certificationExpiry": null
             }
           ]
         },
         {
-          "id": "store-nd-002",
-          "name": "Highland Brew",
-          "code": "ND002",
-          "address": "890 Highland Street",
+          "id": "store-ro3-003",
+          "name": "SBX Cotroceni Kiosk Bucuresti",
+          "code": "RO3003",
+          "address": "",
           "storeLeader": {
-            "name": "Amelia Walker",
+            "name": "Buzatu Stefan",
             "role": "Store Manager",
-            "employmentDate": "2021-04-18",
-            "certificationDate": "2023-04-18",
+            "employmentDate": null,
+            "certificationDate": null,
             "isCertified": true,
-            "certificationExpiry": "2025-04-18"
+            "certificationExpiry": null
           },
           "masters": [
             {
-              "name": "James Hall",
-              "employmentDate": "2022-07-22",
-              "certificationDate": "2024-07-22",
+              "name": "Buzatu Stefan",
+              "employmentDate": null,
+              "certificationDate": null,
               "isCertified": true,
-              "certificationExpiry": "2026-07-22"
+              "certificationExpiry": null
             },
             {
-              "name": "Isabella Young",
-              "employmentDate": "2023-02-09",
-              "certificationDate": "2025-02-09",
-              "isCertified": false,
-              "certificationExpiry": "2027-02-09"
+              "name": "Dinca Andreea",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
             },
             {
-              "name": "Lucas Allen",
-              "employmentDate": "2023-09-28",
-              "certificationDate": "2025-09-28",
-              "isCertified": false,
-              "certificationExpiry": "2027-09-28"
+              "name": "Dorin Denisa",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
             }
           ]
         },
         {
-          "id": "store-nd-003",
-          "name": "Summit Coffee Co",
-          "code": "ND003",
-          "address": "234 Summit Lane",
+          "id": "store-ro3-004",
+          "name": "SBX Militari Drive Thru Bucuresti",
+          "code": "RO3004",
+          "address": "",
           "storeLeader": {
-            "name": "Elijah King",
+            "name": "Alexe Ciprian",
             "role": "Store Manager",
-            "employmentDate": "2020-12-01",
-            "certificationDate": "2022-12-01",
+            "employmentDate": null,
+            "certificationDate": null,
             "isCertified": true,
-            "certificationExpiry": "2024-12-01"
+            "certificationExpiry": null
           },
           "masters": [
             {
-              "name": "Harper Wright",
-              "employmentDate": "2021-06-17",
-              "certificationDate": "2023-06-17",
+              "name": "Milea Alina",
+              "employmentDate": null,
+              "certificationDate": null,
               "isCertified": true,
-              "certificationExpiry": "2025-06-17"
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro3-005",
+          "name": "SBX Drumul Taberei Bucuresti",
+          "code": "RO3005",
+          "address": "",
+          "storeLeader": {
+            "name": "Rosioru Madalina",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro3-006",
+          "name": "SBX Campus Bucuresti",
+          "code": "RO3006",
+          "address": "",
+          "storeLeader": {
+            "name": "Ciobanu Daniela",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Moldovai Romina",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro3-007",
+          "name": "SBX Vulcan Value Center Bucuresti",
+          "code": "RO3007",
+          "address": "",
+          "storeLeader": {
+            "name": "Rapea Alexandru",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro3-008",
+          "name": "SBX Mercur Craiova",
+          "code": "RO3008",
+          "address": "",
+          "storeLeader": {
+            "name": "Buzatu Claudiu",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Dusa Adelina",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro3-009",
+          "name": "SBX Electroputere Craiova",
+          "code": "RO3009",
+          "address": "",
+          "storeLeader": {
+            "name": "Leuca Mihail",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        }
+      ]
+    },
+    {
+      "id": "district-ro4",
+      "name": "District RO4",
+      "code": "RO4",
+      "stores": [
+        {
+          "id": "store-ro4-001",
+          "name": "SBX Braila Mall Braila",
+          "code": "RO4001",
+          "address": "",
+          "storeLeader": {
+            "name": "Andrei Oana Madalina",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Cheles Roxana Georgiana",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro4-002",
+          "name": "SBX Promenada Bucuresti",
+          "code": "RO4002",
+          "address": "",
+          "storeLeader": {
+            "name": "Nuver Anca Cristina",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Oprea Paul",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
             },
             {
-              "name": "Mason Scott",
-              "employmentDate": "2022-09-05",
-              "certificationDate": "2024-09-05",
+              "name": "?",
+              "employmentDate": null,
+              "certificationDate": null,
               "isCertified": true,
-              "certificationExpiry": "2026-09-05"
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro4-003",
+          "name": "SBX Strip Mall Bucuresti",
+          "code": "RO4003",
+          "address": "",
+          "storeLeader": {
+            "name": "Sufragiu Calin",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Stanciu Cristian",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro4-004",
+          "name": "SBX Shopping City Galati",
+          "code": "RO4004",
+          "address": "",
+          "storeLeader": {
+            "name": "Zaharia (Budeanu) Adina",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Paun Gabriela Daniela",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
             },
             {
-              "name": "Evelyn Green",
-              "employmentDate": "2023-04-20",
-              "certificationDate": "2025-04-20",
-              "isCertified": false,
-              "certificationExpiry": "2027-04-20"
+              "name": "Neacsu Marcela Georgiana",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
             },
             {
-              "name": "Logan Adams",
-              "employmentDate": "2021-12-08",
-              "certificationDate": "2023-12-08",
+              "name": "Adelina Dumitras",
+              "employmentDate": null,
+              "certificationDate": null,
               "isCertified": true,
-              "certificationExpiry": "2025-12-08"
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro4-005",
+          "name": "SBX Octogon Iasi",
+          "code": "RO4005",
+          "address": "",
+          "storeLeader": {
+            "name": "Sava Mihai",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro4-006",
+          "name": "SBX Garden Iasi",
+          "code": "RO4006",
+          "address": "",
+          "storeLeader": {
+            "name": "Burlacu Roxana",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro4-007",
+          "name": "SBX Iulius Mall Iasi",
+          "code": "RO4007",
+          "address": "",
+          "storeLeader": {
+            "name": "Balauca Mihai",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Radu Buza",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro4-008",
+          "name": "SBX Moldova Mall Iasi",
+          "code": "RO4008",
+          "address": "",
+          "storeLeader": {
+            "name": "Petrescu Livia",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        }
+      ]
+    },
+    {
+      "id": "district-ro5",
+      "name": "District RO5",
+      "code": "RO5",
+      "stores": [
+        {
+          "id": "store-ro5-001",
+          "name": "SBX America House Bucuresti",
+          "code": "RO5001",
+          "address": "",
+          "storeLeader": {
+            "name": "Plugaru Daniel",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro5-002",
+          "name": "SBX Bucharest Mall Bucuresti",
+          "code": "RO5002",
+          "address": "",
+          "storeLeader": {
+            "name": "Dragnea Valentin",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Botezatu Geani",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Andrei Tintoiu",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro5-003",
+          "name": "SBX Sun Plaza Bucuresti",
+          "code": "RO5003",
+          "address": "",
+          "storeLeader": {
+            "name": "Trasca Bianca",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Trasca Bianca",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro5-004",
+          "name": "SBX Hanul lui Manuc Bucuresti",
+          "code": "RO5004",
+          "address": "",
+          "storeLeader": {
+            "name": "Tiu Alexandra",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro5-005",
+          "name": "SBX Park Lake Titan Bucuresti",
+          "code": "RO5005",
+          "address": "",
+          "storeLeader": {
+            "name": "Ciuperca Alina",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Lache Emanuel",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Pescaru Robert",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro5-006",
+          "name": "SBX Piata Victoriei Bucuresti",
+          "code": "RO5006",
+          "address": "",
+          "storeLeader": {
+            "name": "Paunescu Marian",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro5-007",
+          "name": "SBX Mega Mall Bucuresti",
+          "code": "RO5007",
+          "address": "",
+          "storeLeader": {
+            "name": "Florin Pruteanu",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Sandu Sorin",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro5-008",
+          "name": "SBX Shopping City Ramnicu Valcea",
+          "code": "RO5008",
+          "address": "",
+          "storeLeader": {
+            "name": "Dulcea Andreea",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Calciu Florentin Daniel",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
             }
           ]
         }
       ]
     },
     {
-      "id": "district-4",
-      "name": "Eastside District",
-      "code": "ED",
+      "id": "district-ro6",
+      "name": "District RO6",
+      "code": "RO6",
       "stores": [
         {
-          "id": "store-ed-001",
-          "name": "East Bay Coffee",
-          "code": "ED001",
-          "address": "101 East Street",
+          "id": "store-ro6-001",
+          "name": "SBX Coresi Brasov",
+          "code": "RO6001",
+          "address": "",
           "storeLeader": {
-            "name": "Aria Baker",
+            "name": "Anghel Sergiu",
             "role": "Store Manager",
-            "employmentDate": "2021-01-05",
-            "certificationDate": "2023-01-05",
+            "employmentDate": null,
+            "certificationDate": null,
             "isCertified": true,
-            "certificationExpiry": "2025-01-05"
+            "certificationExpiry": null
           },
           "masters": [
             {
-              "name": "Alexander Nelson",
-              "employmentDate": "2022-02-14",
-              "certificationDate": "2024-02-14",
+              "name": "Ioana Parcalabescu",
+              "employmentDate": null,
+              "certificationDate": null,
               "isCertified": true,
-              "certificationExpiry": "2026-02-14"
-            },
-            {
-              "name": "Mia Carter",
-              "employmentDate": "2023-07-30",
-              "certificationDate": "2025-07-30",
-              "isCertified": false,
-              "certificationExpiry": "2027-07-30"
+              "certificationExpiry": null
             }
           ]
         },
         {
-          "id": "store-ed-002",
-          "name": "Sunrise Espresso",
-          "code": "ED002",
-          "address": "456 Sunrise Boulevard",
+          "id": "store-ro6-002",
+          "name": "SBX Piata Sfatului Brasov",
+          "code": "RO6002",
+          "address": "",
           "storeLeader": {
-            "name": "Sebastian Mitchell",
+            "name": "Ciorciovel Robert",
             "role": "Store Manager",
-            "employmentDate": "2020-09-12",
-            "certificationDate": "2022-09-12",
+            "employmentDate": null,
+            "certificationDate": null,
             "isCertified": true,
-            "certificationExpiry": "2024-09-12"
+            "certificationExpiry": null
           },
           "masters": [
             {
-              "name": "Victoria Perez",
-              "employmentDate": "2021-11-23",
-              "certificationDate": "2023-11-23",
+              "name": "Ciorciovel Robert",
+              "employmentDate": null,
+              "certificationDate": null,
               "isCertified": true,
-              "certificationExpiry": "2025-11-23"
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro6-003",
+          "name": "SBX Afi Brasov",
+          "code": "RO6003",
+          "address": "",
+          "storeLeader": {
+            "name": "Nechita Andrei",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Avadani Maria Elena",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
             },
             {
-              "name": "Daniel Roberts",
-              "employmentDate": "2022-08-16",
-              "certificationDate": "2024-08-16",
+              "name": "Holmanu Andrei Gabriel",
+              "employmentDate": null,
+              "certificationDate": null,
               "isCertified": true,
-              "certificationExpiry": "2026-08-16"
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro6-004",
+          "name": "SBX Baneasa Mall Bucuresti",
+          "code": "RO6004",
+          "address": "",
+          "storeLeader": {
+            "name": "Rafa Alexandru Gratian",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Lupu Laura",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro6-005",
+          "name": "SBX Pipera Plaza Bucuresti",
+          "code": "RO6005",
+          "address": "",
+          "storeLeader": {
+            "name": "Butnaru Gabriela",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro6-006",
+          "name": "SBX Baneasa 2 Feeria Bucuresti",
+          "code": "RO6006",
+          "address": "",
+          "storeLeader": {
+            "name": "Birsan Laurentiu",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro6-007",
+          "name": "SBX Charles de Gaulle Bucuresti",
+          "code": "RO6007",
+          "address": "",
+          "storeLeader": {
+            "name": "Valcu Alexandru",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro6-008",
+          "name": "SBX Afi Palace Ploiesti",
+          "code": "RO6008",
+          "address": "",
+          "storeLeader": {
+            "name": "Toma Andreea",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Voicila Claudiu",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro6-009",
+          "name": "SBX Shopping City Ploiesti",
+          "code": "RO6009",
+          "address": "",
+          "storeLeader": {
+            "name": "Cernea Lavinia",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Cernea Gabriela Lavinia",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
             },
             {
-              "name": "Grace Turner",
-              "employmentDate": "2023-03-07",
-              "certificationDate": "2025-03-07",
-              "isCertified": false,
-              "certificationExpiry": "2027-03-07"
+              "name": "Chiva Aida Steluta",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Nitica Daniela",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro6-010",
+          "name": "SBX Winmarkt Ploiesti",
+          "code": "RO6010",
+          "address": "",
+          "storeLeader": {
+            "name": "Bratu Mariana",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        }
+      ]
+    },
+    {
+      "id": "district-ro7",
+      "name": "District RO7",
+      "code": "RO7",
+      "stores": [
+        {
+          "id": "store-ro7-001",
+          "name": "SBX Iulius Mall Cluj Napoca",
+          "code": "RO7001",
+          "address": "",
+          "storeLeader": {
+            "name": "Prodan Raluca",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro7-002",
+          "name": "SBX Polus (Vivo) Cluj Napoca",
+          "code": "RO7002",
+          "address": "",
+          "storeLeader": {
+            "name": "Mihailiuc Andreia",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Ianes Lenuta",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Finta Andrea",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Ontia Vlad",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Vicovanu Seraia",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro7-003",
+          "name": "SBX Platinia Mall Cluj Napoca",
+          "code": "RO7003",
+          "address": "",
+          "storeLeader": {
+            "name": "Lingurar Razvan",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Razvan Lingurar",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro7-004",
+          "name": "SBX Piata Mare Sibiu",
+          "code": "RO7004",
+          "address": "",
+          "storeLeader": {
+            "name": "Romitan Adriana",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro7-005",
+          "name": "SBX Promenada mall Sibiu",
+          "code": "RO7005",
+          "address": "",
+          "storeLeader": {
+            "name": "Terean (Lodea)Daiana",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro7-006",
+          "name": "SBX Iulius Mall Suceava",
+          "code": "RO7006",
+          "address": "",
+          "storeLeader": {
+            "name": "Beatrice Manolache",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro7-007",
+          "name": "SBX Shopping City Targu Mures",
+          "code": "RO7007",
+          "address": "",
+          "storeLeader": {
+            "name": "Chertes Andrea",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Horvath Kinga",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "district-ro8",
+      "name": "District RO8",
+      "code": "RO8",
+      "stores": [
+        {
+          "id": "store-ro8-001",
+          "name": "SBX Upground Bucuresti",
+          "code": "RO8001",
+          "address": "",
+          "storeLeader": {
+            "name": "Marele Claudia",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro8-002",
+          "name": "SBX Carrefour Orhideea Bucuresti",
+          "code": "RO8002",
+          "address": "",
+          "storeLeader": {
+            "name": "Giurca Claudiu",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Giurca Claudiu",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Ciohodaru Miruna",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Petrache Andreea",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Lazar Antonio",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Popescu Catalina",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro8-003",
+          "name": "SBX Pipera Metro Bucuresti",
+          "code": "RO8003",
+          "address": "",
+          "storeLeader": {
+            "name": "Marele Claudia",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": []
+        },
+        {
+          "id": "store-ro8-004",
+          "name": "SBX Maritimo Constanta",
+          "code": "RO8004",
+          "address": "",
+          "storeLeader": {
+            "name": "Toma Marius",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Boldescu Madalina",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Lica Elena",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro8-005",
+          "name": "SBX City Park Constanta",
+          "code": "RO8005",
+          "address": "",
+          "storeLeader": {
+            "name": "Ilie Corina",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Damaschin Emilian",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            },
+            {
+              "name": "Neculae Luiza",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro8-006",
+          "name": "SBX Tomis Centru Constanta",
+          "code": "RO8006",
+          "address": "",
+          "storeLeader": {
+            "name": "Macau Simona",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Timofte Georgiana",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
+            }
+          ]
+        },
+        {
+          "id": "store-ro8-007",
+          "name": "SBX City Island Constanta",
+          "code": "RO8007",
+          "address": "",
+          "storeLeader": {
+            "name": "Lazar Luciana",
+            "role": "Store Manager",
+            "employmentDate": null,
+            "certificationDate": null,
+            "isCertified": true,
+            "certificationExpiry": null
+          },
+          "masters": [
+            {
+              "name": "Lazar Luciana Andreea",
+              "employmentDate": null,
+              "certificationDate": null,
+              "isCertified": true,
+              "certificationExpiry": null
             }
           ]
         }

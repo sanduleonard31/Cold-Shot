@@ -2,11 +2,12 @@
 .card {
     border-radius: var(--border-radius-small);
     padding: 2rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    background: white;
+    background: var(--card-background);
+    border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 /* Texture background overlay */
@@ -17,11 +18,11 @@
     left: 0;
     right: 0;
     bottom: 0;
-    opacity: 0.03;
+    opacity: 0.015;
     pointer-events: none;
     background-image: 
-        repeating-linear-gradient(45deg, transparent, transparent 10px, currentColor 10px, currentColor 11px),
-        repeating-linear-gradient(-45deg, transparent, transparent 10px, currentColor 10px, currentColor 11px);
+        repeating-linear-gradient(45deg, transparent, transparent 12px, currentColor 12px, currentColor 13px),
+        repeating-linear-gradient(-45deg, transparent, transparent 12px, currentColor 12px, currentColor 13px);
     z-index: 0;
 }
 
@@ -31,8 +32,9 @@
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 0, 0, 0.06);
 }
 
 .card__header {
@@ -68,7 +70,15 @@
     display: block;
 }
 
-/* Profile picture styling for champion, editor, master-speaks */
+/* Override for images within media-text-wrapper (handled by layout rules) */
+.card__media-text-wrapper > .card__image {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    margin: 0;
+}
+
+/* Profile picture styling for champion, editor, and master speaks */
 .card__image--profile {
     width: 150px;
     height: 150px;
@@ -78,49 +88,25 @@
     object-fit: cover;
     border: 4px solid rgba(255, 255, 255, 0.9);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    margin: 0 auto 1.5rem;
+    margin: 0;
 }
 
-/* Master speaks picture styling - rectangular for horizontal layout */
-.card__image--master {
-    width: 250px;
-    height: auto;
-    max-width: 250px;
-    border-radius: var(--border-radius-extra-small);
-    object-fit: cover;
-    border: 4px solid rgba(255, 255, 255, 0.9);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    flex-shrink: 0;
-}
-
-/* Profile content layout */
+/* Profile content layout - vertical: image, quote, button */
 .card__content--profile {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 1.5rem;
 }
 
-/* Master speaks content layout - horizontal with image on left */
-.card__content--master-speaks {
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-    align-items: flex-start;
-}
-
-.card__content--master-speaks .card__quote {
-    flex: 1;
-    margin: 0;
-}
-
-
-/* Quote styling */
+/* Quote styling - default (for other sections) */
 .card__quote {
     margin: 1.5rem 0;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.5);
+    padding: 1.5rem 1.5rem 1.5rem 2rem;
+    background: rgba(0, 0, 0, 0.02);
     border-radius: var(--border-radius-extra-small);
+    border-left: 3px solid rgba(0, 0, 0, 0.1);
     font-style: italic;
     position: relative;
 }
@@ -128,11 +114,47 @@
 .card__quote::before {
     content: '"';
     position: absolute;
-    top: 0.5rem;
+    top: 0.25rem;
     left: 0.5rem;
-    font-size: 3rem;
-    opacity: 0.1;
+    font-size: 2.5rem;
+    opacity: 0.08;
     font-family: Georgia, serif;
+    line-height: 1;
+}
+
+/* Profile quote styling - delicate, no border */
+.card__quote--profile {
+    width: 100%;
+    max-width: 600px;
+    margin: 0;
+    padding: 1.5rem 2rem;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.card__quote--profile::before {
+    content: '"';
+    position: relative;
+    top: 0;
+    left: 0;
+    font-size: 3rem;
+    opacity: 0.12;
+    font-family: Georgia, serif;
+    line-height: 0;
+    display: block;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.card__quote--profile p {
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: 0.3px;
 }
 
 /* Layout modifiers */
@@ -141,15 +163,34 @@
     gap: 2rem;
     align-items: flex-start;
     margin-bottom: 1rem;
+    flex-direction: row;
 }
 
-/* Column layout (default - vertical stacking) */
+/* Standard image styling for sections (not profile/master) */
+.card__media-text-wrapper .card__image {
+    flex-shrink: 0;
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: var(--border-radius-small);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 0;
+}
+
+.card__media-text-wrapper .card__text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Column layout (vertical stacking) */
 .card--layout-column .card__media-text-wrapper {
     flex-direction: column;
     align-items: center;
 }
 
-.card--layout-column .card__image {
+.card--layout-column .card__media-text-wrapper .card__image {
     margin: 1rem auto;
 }
 
@@ -157,19 +198,17 @@
     width: 100%;
 }
 
-/* Row layout (horizontal) */
+/* Row layout (horizontal - image left, text right) - now default */
 .card--layout-row .card__media-text-wrapper {
     flex-direction: row;
     align-items: flex-start;
 }
 
-.card--layout-row .card__image {
+.card--layout-row .card__media-text-wrapper .card__image {
     flex-shrink: 0;
-    width: 250px;
-    max-width: 250px;
-    height: auto;
-    max-height: 300px;
-    margin: 0;
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
 }
 
 .card--layout-row .card__text {
@@ -193,6 +232,17 @@
 .card__pdf-link:hover {
     background: rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
+}
+
+/* Ensure text and buttons stack properly in media-text layout */
+.card__media-text-wrapper .card__text p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.card__media-text-wrapper + .card__link,
+.card__media-text-wrapper .card__pdf-link {
+    margin-top: 1rem;
 }
 
 .card__quote::before {
@@ -239,9 +289,10 @@
 }
 
 @media (max-width: 768px) {
-    .card__image {
-        max-width: 100%;
-        max-height: 280px;
+    /* Section images maintain consistent height on tablet */
+    .card__media-text-wrapper .card__image {
+        width: 240px;
+        height: 240px;
     }
 
     .card__image--profile {
@@ -249,11 +300,6 @@
         height: 120px;
         max-width: 120px;
         max-height: 120px;
-    }
-    
-    .card__image--master {
-        width: 200px;
-        max-width: 200px;
     }
 
     .card__quote {
@@ -265,33 +311,22 @@
         font-size: 2.5rem;
     }
 
-    /* Row layout becomes column on tablet */
-    .card--layout-row .card__media-text-wrapper {
+    /* Media-text wrapper becomes column on tablet */
+    .card__media-text-wrapper {
         flex-direction: column;
         align-items: center;
     }
 
-    .card--layout-row .card__image {
-        width: 100%;
-        max-width: 400px;
-        margin: 1rem auto;
-    }
-    
-    /* Master speaks layout becomes column on tablet */
-    .card__content--master-speaks {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .card__content--master-speaks .card__image--master {
-        width: 220px;
-        max-width: 220px;
+    .card__media-text-wrapper .card__image {
+        margin: 0 auto 1.5rem;
     }
 }
 
 @media (max-width: 480px) {
-    .card__image {
-        max-height: 250px;
+    /* Section images maintain consistent height on mobile */
+    .card__media-text-wrapper .card__image {
+        width: 200px;
+        height: 200px;
     }
 
     .card__image--profile {
@@ -299,11 +334,6 @@
         height: 100px;
         max-width: 100px;
         max-height: 100px;
-    }
-    
-    .card__image--master {
-        width: 180px;
-        max-width: 180px;
     }
 
     .card__quote {
@@ -318,369 +348,414 @@
 
 /* Theme: Love (Pink/Rose) */
 .card--love {
-    background: linear-gradient(135deg, #fff5f7 0%, #ffe8ec 100%);
-    border-left: 4px solid #ff6b9d;
+    background: linear-gradient(135deg, #fffafc 0%, #fff5f8 100%);
+    border-left: 3px solid #ff6b9d;
+    box-shadow: 0 2px 8px rgba(255, 107, 157, 0.08);
 }
 
 .card--love::before {
     content: '❤️';
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 2rem;
-    opacity: 0.15;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    opacity: 0.08;
     z-index: 2;
 }
 
 .card--love::after {
     background-image: 
-        radial-gradient(circle, #ff6b9d 1px, transparent 1px);
-    background-size: 20px 20px;
-    opacity: 0.04;
+        radial-gradient(circle, #ff6b9d 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    opacity: 0.025;
 }
 
 .card--love .card__title {
-    color: #c41e3a;
+    color: #d63668;
+    text-shadow: 0 1px 2px rgba(255, 107, 157, 0.1);
 }
 
 .card--love .card__link {
-    background-color: #ff6b9d;
+    background: linear-gradient(135deg, #ff6b9d 0%, #ff8bb5 100%);
     color: white;
+    box-shadow: 0 2px 8px rgba(255, 107, 157, 0.2);
 }
 
 .card--love .card__link:hover {
-    background-color: #ff4781;
+    background: linear-gradient(135deg, #ff4781 0%, #ff6b9d 100%);
+    box-shadow: 0 4px 12px rgba(255, 107, 157, 0.3);
 }
 
 .card--love .card__quote {
-    border-left-color: #ff6b9d;
+    background: rgba(255, 107, 157, 0.04);
+    border-left: 3px solid #ff6b9d;
 }
 
 /* Theme: Action (Orange/Energy) */
 .card--action {
-    background: linear-gradient(135deg, #fff8f0 0%, #ffe8d6 100%);
-    border-left: 4px solid #ff8c42;
+    background: linear-gradient(135deg, #fffcf7 0%, #fff8f0 100%);
+    border-left: 3px solid #ff8c42;
+    box-shadow: 0 2px 8px rgba(255, 140, 66, 0.08);
 }
 
 .card--action::before {
     content: '⚡';
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 2rem;
-    opacity: 0.15;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    opacity: 0.08;
     z-index: 2;
 }
 
 .card--action::after {
     background-image: 
-        linear-gradient(45deg, #ff8c42 25%, transparent 25%),
-        linear-gradient(-45deg, #ff8c42 25%, transparent 25%);
-    background-size: 30px 30px;
-    opacity: 0.03;
+        linear-gradient(45deg, rgba(255, 140, 66, 0.03) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255, 140, 66, 0.03) 25%, transparent 25%);
+    background-size: 32px 32px;
+    opacity: 0.5;
 }
 
 .card--action .card__title {
-    color: #d4680f;
+    color: #e67425;
+    text-shadow: 0 1px 2px rgba(255, 140, 66, 0.1);
 }
 
 .card--action .card__link {
-    background-color: #ff8c42;
+    background: linear-gradient(135deg, #ff8c42 0%, #ffaa6b 100%);
     color: white;
+    box-shadow: 0 2px 8px rgba(255, 140, 66, 0.2);
 }
 
 .card--action .card__link:hover {
-    background-color: #ff7324;
+    background: linear-gradient(135deg, #ff7324 0%, #ff8c42 100%);
+    box-shadow: 0 4px 12px rgba(255, 140, 66, 0.3);
 }
 
 .card--action .card__quote {
-    border-left-color: #ff8c42;
+    background: rgba(255, 140, 66, 0.04);
+    border-left: 3px solid #ff8c42;
 }
 
 /* Theme: Important (Red/Urgent) */
 .card--important {
-    background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
-    border-left: 4px solid #e63946;
+    background: linear-gradient(135deg, #fffafa 0%, #fff5f5 100%);
+    border-left: 3px solid #e63946;
+    box-shadow: 0 2px 8px rgba(230, 57, 70, 0.08);
 }
 
 .card--important::before {
     content: '⚠️';
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 2rem;
-    opacity: 0.15;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    opacity: 0.08;
     z-index: 2;
 }
 
 .card--important::after {
     background-image: 
-        repeating-linear-gradient(0deg, #e63946 0px, #e63946 1px, transparent 1px, transparent 20px),
-        repeating-linear-gradient(90deg, #e63946 0px, #e63946 1px, transparent 1px, transparent 20px);
-    opacity: 0.04;
+        repeating-linear-gradient(0deg, rgba(230, 57, 70, 0.02) 0px, rgba(230, 57, 70, 0.02) 1px, transparent 1px, transparent 24px),
+        repeating-linear-gradient(90deg, rgba(230, 57, 70, 0.02) 0px, rgba(230, 57, 70, 0.02) 1px, transparent 1px, transparent 24px);
+    opacity: 0.6;
 }
 
 .card--important .card__title {
-    color: #b02b37;
+    color: #c92a35;
+    text-shadow: 0 1px 2px rgba(230, 57, 70, 0.1);
 }
 
 .card--important .card__link {
-    background-color: #e63946;
+    background: linear-gradient(135deg, #e63946 0%, #f05860 100%);
     color: white;
+    box-shadow: 0 2px 8px rgba(230, 57, 70, 0.2);
 }
 
 .card--important .card__link:hover {
-    background-color: #d62839;
+    background: linear-gradient(135deg, #d62839 0%, #e63946 100%);
+    box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
 }
 
 .card--important .card__quote {
-    border-left-color: #e63946;
+    background: rgba(230, 57, 70, 0.04);
+    border-left: 3px solid #e63946;
 }
 
 /* Theme: News (Blue/Information) */
 .card--news {
-    background: linear-gradient(135deg, #f0f7ff 0%, #e0eeff 100%);
-    border-left: 4px solid #4a90e2;
+    background: linear-gradient(135deg, #fafcff 0%, #f5f9ff 100%);
+    border-left: 3px solid #4a90e2;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.08);
 }
 
 .card--news::before {
     content: '📰';
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 2rem;
-    opacity: 0.15;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    opacity: 0.08;
     z-index: 2;
 }
 
 .card--news::after {
     background-image: 
-        linear-gradient(30deg, #4a90e2 12%, transparent 12.5%, transparent 87%, #4a90e2 87.5%, #4a90e2),
-        linear-gradient(150deg, #4a90e2 12%, transparent 12.5%, transparent 87%, #4a90e2 87.5%, #4a90e2);
-    background-size: 40px 60px;
-    opacity: 0.03;
+        linear-gradient(30deg, rgba(74, 144, 226, 0.02) 12%, transparent 12.5%, transparent 87%, rgba(74, 144, 226, 0.02) 87.5%),
+        linear-gradient(150deg, rgba(74, 144, 226, 0.02) 12%, transparent 12.5%, transparent 87%, rgba(74, 144, 226, 0.02) 87.5%);
+    background-size: 44px 64px;
+    opacity: 0.6;
 }
 
 .card--news .card__title {
-    color: #2c5f8d;
+    color: #3876c2;
+    text-shadow: 0 1px 2px rgba(74, 144, 226, 0.1);
 }
 
 .card--news .card__link {
-    background-color: #4a90e2;
+    background: linear-gradient(135deg, #4a90e2 0%, #6ba5eb 100%);
     color: white;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.2);
 }
 
 .card--news .card__link:hover {
-    background-color: #357abd;
+    background: linear-gradient(135deg, #357abd 0%, #4a90e2 100%);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
 }
 
 .card--news .card__quote {
-    border-left-color: #4a90e2;
+    background: rgba(74, 144, 226, 0.04);
+    border-left: 3px solid #4a90e2;
 }
 
 /* Theme: Caring (Green/Natural) */
 .card--caring {
-    background: linear-gradient(135deg, #f5faf7 0%, #e6f4eb 100%);
-    border-left: 4px solid var(--accent-color);
+    background: linear-gradient(135deg, #fafdfb 0%, #f5faf7 100%);
+    border-left: 3px solid var(--accent-color);
+    box-shadow: 0 2px 8px rgba(74, 157, 111, 0.08);
 }
 
 .card--caring::before {
     content: '🌿';
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 2rem;
-    opacity: 0.15;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    opacity: 0.08;
     z-index: 2;
 }
 
 .card--caring::after {
     background-image: 
-        radial-gradient(circle at 50% 50%, var(--accent-color) 1px, transparent 1px),
-        radial-gradient(circle at 0% 100%, var(--accent-color) 1px, transparent 1px);
-    background-size: 25px 25px;
-    background-position: 0 0, 12.5px 12.5px;
-    opacity: 0.04;
+        radial-gradient(circle at 50% 50%, rgba(74, 157, 111, 0.02) 1px, transparent 1px),
+        radial-gradient(circle at 0% 100%, rgba(74, 157, 111, 0.02) 1px, transparent 1px);
+    background-size: 28px 28px;
+    background-position: 0 0, 14px 14px;
+    opacity: 0.6;
 }
 
 .card--caring .card__title {
     color: var(--primary-color);
+    text-shadow: 0 1px 2px rgba(74, 157, 111, 0.1);
 }
 
 .card--caring .card__link {
-    background-color: var(--accent-color);
+    background: linear-gradient(135deg, var(--accent-color) 0%, #5fb886 100%);
     color: white;
+    box-shadow: 0 2px 8px rgba(74, 157, 111, 0.2);
 }
 
 .card--caring .card__link:hover {
-    background-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    box-shadow: 0 4px 12px rgba(74, 157, 111, 0.3);
 }
 
 .card--caring .card__quote {
-    border-left-color: var(--accent-color);
+    background: rgba(74, 157, 111, 0.04);
+    border-left: 3px solid var(--accent-color);
 }
 
 /* Theme: Hard (Dark/Intense) */
 .card--hard {
-    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
-    border-left: 4px solid #2d3142;
+    background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+    border-left: 3px solid #2d3142;
+    box-shadow: 0 2px 8px rgba(45, 49, 66, 0.1);
 }
 
 .card--hard::before {
     content: '💪';
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 2rem;
-    opacity: 0.15;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    opacity: 0.08;
     z-index: 2;
 }
 
 .card--hard::after {
     background-image: 
-        linear-gradient(45deg, #2d3142 5%, transparent 5%),
-        linear-gradient(-45deg, #2d3142 5%, transparent 5%);
-    background-size: 15px 15px;
-    opacity: 0.03;
+        linear-gradient(45deg, rgba(45, 49, 66, 0.015) 5%, transparent 5%),
+        linear-gradient(-45deg, rgba(45, 49, 66, 0.015) 5%, transparent 5%);
+    background-size: 18px 18px;
+    opacity: 0.6;
 }
 
 .card--hard .card__title {
     color: #1a1d2e;
+    text-shadow: 0 1px 2px rgba(45, 49, 66, 0.1);
 }
 
 .card--hard .card__link {
-    background-color: #2d3142;
+    background: linear-gradient(135deg, #2d3142 0%, #3d4255 100%);
     color: white;
+    box-shadow: 0 2px 8px rgba(45, 49, 66, 0.25);
 }
 
 .card--hard .card__link:hover {
-    background-color: #1a1d2e;
+    background: linear-gradient(135deg, #1a1d2e 0%, #2d3142 100%);
+    box-shadow: 0 4px 12px rgba(45, 49, 66, 0.35);
 }
 
 .card--hard .card__quote {
-    border-left-color: #2d3142;
+    background: rgba(45, 49, 66, 0.04);
+    border-left: 3px solid #2d3142;
 }
 
 /* Theme: Astral (Purple/Cosmic) */
 .card--astral {
-    background: linear-gradient(135deg, #f8f5ff 0%, #f0e6ff 100%);
-    border-left: 4px solid #8b5cf6;
+    background: linear-gradient(135deg, #fdfbff 0%, #faf8ff 100%);
+    border-left: 3px solid #8b5cf6;
+    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.08);
 }
 
 .card--astral::before {
     content: '✨';
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 2rem;
-    opacity: 0.15;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    opacity: 0.08;
     z-index: 2;
 }
 
 .card--astral::after {
     background-image: 
-        radial-gradient(circle, #8b5cf6 2px, transparent 2px),
-        radial-gradient(circle, #8b5cf6 1px, transparent 1px);
-    background-size: 50px 50px, 25px 25px;
-    background-position: 0 0, 25px 25px;
-    opacity: 0.04;
+        radial-gradient(circle, rgba(139, 92, 246, 0.025) 1.5px, transparent 1.5px),
+        radial-gradient(circle, rgba(139, 92, 246, 0.015) 1px, transparent 1px);
+    background-size: 52px 52px, 28px 28px;
+    background-position: 0 0, 26px 26px;
+    opacity: 0.6;
 }
 
 .card--astral .card__title {
-    color: #6d28d9;
+    color: #7c3aed;
+    text-shadow: 0 1px 2px rgba(139, 92, 246, 0.1);
 }
 
 .card--astral .card__link {
-    background-color: #8b5cf6;
+    background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
     color: white;
+    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.2);
 }
 
 .card--astral .card__link:hover {
-    background-color: #7c3aed;
+    background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
 }
 
 .card--astral .card__quote {
-    border-left-color: #8b5cf6;
+    background: rgba(139, 92, 246, 0.04);
+    border-left: 3px solid #8b5cf6;
 }
 
 /* Theme: Legendary (Gold/Premium) */
 .card--legendary {
-    background: linear-gradient(135deg, #fffbf0 0%, #fff4d6 100%);
-    border-left: 4px solid #f59e0b;
+    background: linear-gradient(135deg, #fffef9 0%, #fffcf0 100%);
+    border-left: 3px solid #f59e0b;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.08);
 }
 
 .card--legendary::before {
     content: '👑';
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 2rem;
-    opacity: 0.15;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    opacity: 0.08;
     z-index: 2;
 }
 
 .card--legendary::after {
     background-image: 
-        repeating-linear-gradient(45deg, transparent, transparent 10px, #f59e0b 10px, #f59e0b 11px),
-        repeating-linear-gradient(-45deg, transparent, transparent 10px, #f59e0b 10px, #f59e0b 11px);
-    opacity: 0.04;
+        repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(245, 158, 11, 0.02) 12px, rgba(245, 158, 11, 0.02) 13px),
+        repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(245, 158, 11, 0.02) 12px, rgba(245, 158, 11, 0.02) 13px);
+    opacity: 0.6;
 }
 
 .card--legendary .card__title {
-    color: #b45309;
+    color: #d97706;
+    text-shadow: 0 1px 2px rgba(245, 158, 11, 0.1);
 }
 
 .card--legendary .card__link {
-    background-color: #f59e0b;
+    background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
     color: white;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
 }
 
 .card--legendary .card__link:hover {
-    background-color: #d97706;
+    background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
 }
 
 .card--legendary .card__quote {
-    border-left-color: #f59e0b;
+    background: rgba(245, 158, 11, 0.04);
+    border-left: 3px solid #f59e0b;
 }
 
 /* Theme: Event (Teal/Celebration) */
 .card--event {
-    background: linear-gradient(135deg, #f0fdff 0%, #ccf7ff 100%);
-    border-left: 4px solid #06b6d4;
+    background: linear-gradient(135deg, #fbfeff 0%, #f5fcff 100%);
+    border-left: 3px solid #06b6d4;
+    box-shadow: 0 2px 8px rgba(6, 182, 212, 0.08);
 }
 
 .card--event::before {
     content: '🎉';
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 2rem;
-    opacity: 0.15;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    opacity: 0.08;
     z-index: 2;
 }
 
 .card--event::after {
     background-image: 
-        repeating-linear-gradient(60deg, #06b6d4, #06b6d4 1px, transparent 1px, transparent 10px),
-        repeating-linear-gradient(-60deg, #06b6d4, #06b6d4 1px, transparent 1px, transparent 10px);
-    opacity: 0.04;
+        repeating-linear-gradient(60deg, rgba(6, 182, 212, 0.02), rgba(6, 182, 212, 0.02) 1px, transparent 1px, transparent 12px),
+        repeating-linear-gradient(-60deg, rgba(6, 182, 212, 0.02), rgba(6, 182, 212, 0.02) 1px, transparent 1px, transparent 12px);
+    opacity: 0.6;
 }
 
 .card--event .card__title {
-    color: #0e7490;
+    color: #0891b2;
+    text-shadow: 0 1px 2px rgba(6, 182, 212, 0.1);
 }
 
 .card--event .card__link {
-    background-color: #06b6d4;
+    background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
     color: white;
+    box-shadow: 0 2px 8px rgba(6, 182, 212, 0.2);
 }
 
 .card--event .card__link:hover {
-    background-color: #0891b2;
+    background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+    box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
 }
 
 .card--event .card__quote {
-    border-left-color: #06b6d4;
+    background: rgba(6, 182, 212, 0.04);
+    border-left: 3px solid #06b6d4;
 }
 
 /* Layout Modifiers */

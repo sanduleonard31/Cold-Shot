@@ -48,7 +48,7 @@
     {
       "id": "master-speaks",
       "title": "Master Speaks",
-      "row": 6,
+      "row": 3,
       "theme": "hard",
       "layout": "row",
       "folder": "master-speaks",
@@ -57,7 +57,7 @@
     {
       "id": "changing-timezones",
       "title": "Changing Timezones",
-      "row": 7,
+      "row": 6,
       "theme": "event",
       "layout": "row",
       "folder": "changing-timezones",

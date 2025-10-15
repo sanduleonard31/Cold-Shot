@@ -263,7 +263,11 @@
 
 .archive-card__content--project .archive-card__image {
     flex-shrink: 0;
-    max-width: 350px;
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: var(--border-radius-small);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .archive-card__content--project .archive-card__text-group {
@@ -364,7 +368,8 @@
     }
     
     .archive-card__content--project .archive-card__image {
-        max-width: 300px;
+        width: 240px;
+        height: 240px;
     }
 }
 
@@ -414,6 +419,7 @@
     
     /* Projects remain column layout on mobile */
     .archive-card__content--project .archive-card__image {
-        max-width: 250px;
+        width: 200px;
+        height: 200px;
     }
 }
