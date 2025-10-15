@@ -24,7 +24,7 @@
     --layout-padding: 2rem;
 
     /* Footer specific */
-    --footer-height: 10rem; --footer-height-phone: 5rem;
+    --footer-height: 15rem; --footer-height-phone: 5rem;
     --footer-icon-size: 3rem; --footer-icon-size-phone: 2rem;
     --footer-background-color: var(--accent-color);
     --footer-background-color-hover: var(--primary-color);
@@ -33,15 +33,17 @@
     --footer-border: var(--border-color);
 
     /* Glassmorphism */
-    --glass-color: rgba(225, 225, 225, 0.6);
-    --glass-border: rgba(255, 255, 255, 0.7);
+    --glass-color: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.2);
     --blur-intensity: 3px;
 
     /* Shadows */
     --black-shadow: rgba(0, 0, 0, 0.4);
     --white-shadow: rgba(255, 255, 255, 0.4);
-    --box-shadow-top: 0 5px 25px var(--black-shadow); --box-shadow-bottom: 0 -5px 25px var(--black-shadow);
-    --box-shadow-black-glow: 0 0 15px var(--black-shadow); --box-shadow-white-glow: 0 0 15px var(--white-shadow);
+    --box-shadow-top: 0 5px 25px var(--black-shadow); 
+    --box-shadow-bottom: 0 -5px 25px var(--black-shadow);
+    --box-shadow-black-glow: 0 0 15px var(--black-shadow); 
+    --box-shadow-white-glow: 0 0 15px var(--white-shadow);
 
     /* Borders */
     --border-width-thin: 1px;
