@@ -23,6 +23,11 @@ class MyFooter extends HTMLElement{
             .then(html => {
                 // Replace all asset paths with the correct prefix
                 const correctedHtml = html.replace(/\.\.\/\.\.\/\.\.\/assets\//g, assetsPrefix);
+                
+                console.log('Footer loaded from:', footerPath);
+                console.log('Assets prefix:', assetsPrefix);
+                console.log('Corrected HTML:', correctedHtml.substring(0, 500));
+                
                 this.innerHTML = correctedHtml;
             })
             .catch(err => {
