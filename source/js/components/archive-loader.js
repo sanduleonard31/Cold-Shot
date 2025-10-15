@@ -490,7 +490,7 @@ class ArchiveLoader {
                 <div class="archive-card__content">
                     <div class="archive-card__profile">
                         <p class="archive-card__name">${data.name || ''}</p>
-                        <p class="archive-card__text">${data.message || ''}</p>
+                        ${this.formatText(data.message)}
                     </div>
                 </div>
             </div>
@@ -508,7 +508,7 @@ class ArchiveLoader {
                 <div class="archive-card__content">
                     <div class="archive-card__profile">
                         <p class="archive-card__name">${data.name || ''}</p>
-                        <p class="archive-card__text">${data.message || ''}</p>
+                        ${this.formatText(data.message)}
                     </div>
                 </div>
             </div>
@@ -533,12 +533,12 @@ class ArchiveLoader {
                             <div class="archive-card__timeline-item">
                                 ${this.createLazyImageHTML(`${path}/${master.thenImage}`, `${master.name} - ${master.then}`)}
                                 <h4 class="archive-card__timeline-label">${master.then}</h4>
-                                <p class="archive-card__text">${master.thenDesc}</p>
+                                ${this.formatText(master.thenDesc)}
                             </div>
                             <div class="archive-card__timeline-item">
                                 ${this.createLazyImageHTML(`${path}/${master.nowImage}`, `${master.name} - Now`)}
                                 <h4 class="archive-card__timeline-label">Now</h4>
-                                <p class="archive-card__text">${master.nowDesc}</p>
+                                ${this.formatText(master.nowDesc)}
                             </div>
                         </div>
                     </div>
@@ -569,6 +569,26 @@ class ArchiveLoader {
         return masters;
     }
 
+    // Escape HTML special characters
+    escapeHtml(text) {
+        if (!text && text !== 0) return '';
+        return String(text)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    // Convert newlines into paragraphs and <br>
+    formatText(text) {
+        if (!text && text !== 0) return '';
+        const normalized = String(text).replace(/\r\n/g, '\n');
+        const escaped = this.escapeHtml(normalized);
+        const paragraphs = escaped.split(/\n\s*\n/).map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`);
+        return paragraphs.join('');
+    }
+
     /**
      * Create lazy-loaded image HTML
      */
@@ -597,7 +617,7 @@ class ArchiveLoader {
                         <div class="archive-card__content archive-card__content--project">
                             ${imgHTML}
                             <div class="archive-card__text-group">
-                                <p class="archive-card__text">${project.data.description || ''}</p>
+                                ${this.formatText(project.data.description)}
                                 ${project.media.pdfs.length > 0 ? `<a href="${project.path}/${project.media.pdfs[0]}" class="archive-card__button" target="_blank">📄 View PDF</a>` : ''}
                             </div>
                         </div>
@@ -624,7 +644,7 @@ class ArchiveLoader {
                 <div class="archive-card__content archive-card__content--project">
                     ${imgHTML}
                     <div class="archive-card__text-group">
-                        <p class="archive-card__text">${data.description || ''}</p>
+                        ${this.formatText(data.description)}
                         ${media.pdfs.length > 0 ? `<a href="${path}/${media.pdfs[0]}" class="archive-card__button" target="_blank">📄 View PDF</a>` : ''}
                     </div>
                 </div>
@@ -650,7 +670,7 @@ class ArchiveLoader {
                         <div class="archive-card__content archive-card__content--project">
                             ${imgHTML}
                             <div class="archive-card__text-group">
-                                <p class="archive-card__text">${item.data.description || ''}</p>
+                                ${this.formatText(item.data.description)}
                                 ${item.media.pdfs.length > 0 ? `<a href="${item.path}/${item.media.pdfs[0]}" class="archive-card__button" target="_blank">📄 Read More</a>` : ''}
                             </div>
                         </div>
@@ -677,7 +697,7 @@ class ArchiveLoader {
                 <div class="archive-card__content archive-card__content--project">
                     ${imgHTML}
                     <div class="archive-card__text-group">
-                        <p class="archive-card__text">${data.description || ''}</p>
+                        ${this.formatText(data.description)}
                         ${media.pdfs.length > 0 ? `<a href="${path}/${media.pdfs[0]}" class="archive-card__button" target="_blank">📄 Read More</a>` : ''}
                     </div>
                 </div>
@@ -727,7 +747,7 @@ class ArchiveLoader {
                 <div class="archive-card__content ${media.images.length > 0 ? 'archive-card__content--project' : ''}">
                     ${imgHTML}
                     ${media.images.length > 0 ? '<div class="archive-card__text-group">' : ''}
-                        <p class="archive-card__text">${data.content || ''}</p>
+                        ${this.formatText(data.content)}
                     ${media.images.length > 0 ? '</div>' : ''}
                 </div>
             </div>
@@ -742,7 +762,7 @@ class ArchiveLoader {
                     <span class="archive-card__date">${monthLabel}</span>
                 </div>
                 <div class="archive-card__content">
-                    <p class="archive-card__text">${section.description}</p>
+                    ${this.formatText(section.description)}
                 </div>
             </div>
         `;

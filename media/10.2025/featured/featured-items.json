@@ -1,0 +1,6 @@
+{
+  "folders": [
+    "EMEA Barista Championships", "featured-2"
+  ],
+  "_comment": "List all folder names in the featured directory that should be loaded as featured items. The system will automatically try to load text.json from each folder."
+}

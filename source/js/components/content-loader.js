@@ -27,6 +27,27 @@ class ContentLoader {
         return `${month}.${year}`;
     }
 
+    // Escape HTML special characters to avoid injecting raw HTML
+    escapeHtml(text) {
+        if (!text && text !== 0) return '';
+        return String(text)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    // Convert newlines into paragraphs and line breaks
+    formatText(text) {
+        if (!text && text !== 0) return '';
+        const normalized = String(text).replace(/\r\n/g, '\n');
+        const escaped = this.escapeHtml(normalized);
+        // Split into paragraphs on double newlines, convert single newlines to <br>
+        const paragraphs = escaped.split(/\n\s*\n/).map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`);
+        return paragraphs.join('');
+    }
+
     /**
      * Create a lazy-loaded image element
      */
@@ -382,7 +403,7 @@ class ContentLoader {
                 <div class="card__content card__content--profile">
                     ${imgHTML}
                     <blockquote class="card__quote card__quote--profile">
-                        <p>${data.message || ''}</p>
+                        ${this.formatText(data.message)}
                     </blockquote>
                     ${this.links['champion-instagram'] ? `<a href="${this.links['champion-instagram']}" class="card__link" target="_blank" rel="noopener noreferrer">Follow on Instagram</a>` : ''}
                 </div>
@@ -399,7 +420,7 @@ class ContentLoader {
                 <div class="card__content card__content--profile">
                     ${imgHTML}
                     <blockquote class="card__quote card__quote--profile">
-                        <p>${data.message || ''}</p>
+                        ${this.formatText(data.message)}
                     </blockquote>
                     ${this.links['editor-instagram'] ? `<a href="${this.links['editor-instagram']}" class="card__link" target="_blank" rel="noopener noreferrer">Connect with Editor</a>` : ''}
                 </div>
@@ -463,7 +484,7 @@ class ContentLoader {
                 <div class="card__content card__content--profile">
                     ${imgHTML}
                     <blockquote class="card__quote card__quote--profile">
-                        <p>${data.message || ''}</p>
+                        ${this.formatText(data.message)}
                     </blockquote>
                     ${this.links['coffee-master-apply'] ? `<a href="${this.links['coffee-master-apply']}" class="card__link" target="_blank" rel="noopener noreferrer">Become a Coffee Master</a>` : ''}
                 </div>
@@ -480,7 +501,7 @@ class ContentLoader {
                     <div class="card__media-text-wrapper">
                         ${imgHTML}
                         <div class="card__text">
-                            ${data.description ? `<p>${data.description}</p>` : ''}
+                            ${data.description ? this.formatText(data.description) : ''}
                             ${this.links['matcha-instagram'] ? `<a href="${this.links['matcha-instagram']}" class="card__link" target="_blank" rel="noopener noreferrer">Follow Matcha Zone</a>` : ''}
                             ${media.pdfs.length > 0 ? `<a href="${path}/${media.pdfs[0]}" class="card__pdf-link" target="_blank">📄 Read More</a>` : ''}
                         </div>
@@ -500,7 +521,7 @@ class ContentLoader {
                     <div class="card__media-text-wrapper">
                         ${imgHTML}
                         <div class="card__text">
-                            <p>${section.description}</p>
+                            ${section.description ? this.formatText(section.description) : ''}
                             ${media.pdfs.length > 0 ? `<a href="${path}/${media.pdfs[0]}" class="card__pdf-link" target="_blank">📄 View Document</a>` : ''}
                         </div>
                     </div>
