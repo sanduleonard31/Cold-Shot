@@ -1,7 +1,39 @@
-main{
+/* Body and HTML structure */
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main content area */
+main {
     margin-top: var(--header-height);
-    margin-bottom: var(--footer-height);
-    height: var(--layout-max-height);
     padding: var(--layout-padding);
-    
+    padding-bottom: 4rem;
+    flex: 1 0 auto;
+}
+
+/* Ensure footer stays at bottom */
+.footer-container {
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    main {
+        margin-top: var(--header-height-phone);
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 1rem;
+    }
 }

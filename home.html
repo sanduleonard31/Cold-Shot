@@ -5,34 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./source/styles/global.css">
     <link rel="icon"  href="./assets/logo/logo-mug-broken.svg">
-    <title>Cold Shot</title> 
-
+    <title>Cold Shot - Home</title> 
 </head>
-
-
 
 <body>
 <!----------------------------------------------------------------------->
 <loaded-header></loaded-header>
 
-
-
-<main>
-    <p>This is a archive HTML template.</p>
+<main id="main-content">
+    <div id="content-container">
+        <!-- Content will be dynamically loaded here -->
+        <div class="loading-spinner"></div>
+    </div>
 </main>
-
-
-
 
 <loaded-footer></loaded-footer>
 <!----------------------------------------------------------------------->
-<script src="./source/js/components/archive-loader.js"></script>
 <script src="./source/js/components/header-loader.js"></script>
 <script src="./source/js/components/footer-loader.js"></script>
-<script src="./source/js/components/home-content-fetcher.js"></script>
-<script src="./source/js/components/see-more-btn.js"></script>
+<script src="./source/js/components/month-switcher.js"></script>
+<script src="./source/js/components/content-loader.js"></script>
 </body>
-
-    
-
 </html>

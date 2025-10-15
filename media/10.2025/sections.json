@@ -1,0 +1,85 @@
+{
+  "sections": [
+    {
+      "id": "champion",
+      "title": "Champion's Word",
+      "row": 1,
+      "theme": "legendary",
+      "layout": "column",
+      "folder": "champion",
+      "description": "Words of wisdom from our National Champion"
+    },
+    {
+      "id": "editor",
+      "title": "Editor's Word",
+      "row": 1,
+      "theme": "important",
+      "layout": "column",
+      "folder": "editor",
+      "description": "Insights from the Coffee & Craft Leader"
+    },
+    {
+      "id": "matcha-zone",
+      "title": "Matcha Zone",
+      "row": 2,
+      "theme": "caring",
+      "layout": "column",
+      "folder": "matcha-zone",
+      "description": "Dive into the world of matcha"
+    },
+    {
+      "id": "knowledge-bites",
+      "title": "Knowledge Bites",
+      "row": 3,
+      "theme": "astral",
+      "layout": "column",
+      "folder": "knowledge bites",
+      "description": "Quick coffee facts to expand your knowledge"
+    },
+    {
+      "id": "spread-kindness",
+      "title": "Spread Kindness",
+      "row": 4,
+      "theme": "love",
+      "layout": "column",
+      "folder": "spread-kindness",
+      "description": "Heartwarming stories from our community"
+    },
+    {
+      "id": "master-speaks",
+      "title": "Master Speaks",
+      "row": 5,
+      "theme": "hard",
+      "layout": "row",
+      "folder": "master-speaks",
+      "description": "Coffee Masters share their journey"
+    },
+    {
+      "id": "changing-timezones",
+      "title": "Changing Timezones",
+      "row": 6,
+      "theme": "event",
+      "layout": "row",
+      "folder": "changing-timezones",
+      "description": "Coffee Masters through time"
+    },
+    {
+      "id": "projects",
+      "title": "Projects",
+      "row": 7,
+      "theme": "action",
+      "layout": "dropdown",
+      "folder": "projects",
+      "description": "Explore our ongoing coffee projects"
+    },
+    {
+      "id": "featured",
+      "title": "Featured",
+      "row": 8,
+      "theme": "news",
+      "layout": "dynamic",
+      "folder": "featured",
+      "description": "Latest highlights and announcements"
+    }
+  ]
+}
