@@ -5,34 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./source/styles/global.css">
     <link rel="icon"  href="./assets/logo/logo-mug-broken.svg">
-    <title>Cold Shot</title> 
-
+    <title>Cold Shot - Archive</title> 
 </head>
-
-
 
 <body>
 <!----------------------------------------------------------------------->
 <loaded-header></loaded-header>
 
+<main id="main-content">
+    <!-- Archive Filters -->
+    <section class="archive-filters">
+        <h2 class="archive-filters__title">Newsletter Archive</h2>
+        <div class="archive-filters__controls">
+            <div class="archive-filters__group">
+                <label for="month-selector" class="archive-filters__label">Filter by Month</label>
+                <select id="month-selector" class="archive-filters__select">
+                    <option value="all">All Months</option>
+                </select>
+            </div>
+            <div class="archive-filters__group">
+                <label for="section-selector" class="archive-filters__label">Filter by Section</label>
+                <select id="section-selector" class="archive-filters__select">
+                    <option value="all">All Sections</option>
+                </select>
+            </div>
+        </div>
+    </section>
 
-
-<main>
-    <p>This is a archive HTML template.</p>
+    <!-- Archive Content Container -->
+    <div id="archive-container">
+        <div class="loading-spinner"></div>
+    </div>
 </main>
-
-
-
 
 <loaded-footer></loaded-footer>
 <!----------------------------------------------------------------------->
-<script src="./source/js/components/archive-loader.js"></script>
+<script src="./source/js/utils/content-utils.js"></script>
 <script src="./source/js/components/header-loader.js"></script>
 <script src="./source/js/components/footer-loader.js"></script>
-<script src="./source/js/components/home-content-fetcher.js"></script>
-<script src="./source/js/components/see-more-btn.js"></script>
+<script src="./source/js/components/archive-loader.js"></script>
 </body>
-
-    
-
 </html>

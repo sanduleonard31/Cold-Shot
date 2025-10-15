@@ -24,7 +24,48 @@
     margin-bottom: 0;
 }
 
-/* Master Timeline Styles */
+/* Changing Timezones Cards Wrapper - Matching Archive Style */
+.timezone-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Timeline for Changing Timezones - Matching Archive Style */
+.card--timezone .card__timeline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.card__timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card__timeline-label {
+    font-family: var(--font-trade-gothic-bold);
+    font-size: 1.125rem;
+    color: var(--primary-color);
+    margin: 1rem 0 0.5rem;
+}
+
+.card__timeline-item .card__image {
+    max-width: 200px;
+    height: auto;
+    border-radius: var(--border-radius-extra-small);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+}
+
+.card__timeline-item .card__text {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* Old Master Timeline Styles - Keep for backwards compatibility */
 .master-timeline {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -139,6 +180,12 @@
     }
 
     .master-timeline {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* Changing Timezones responsive - matching archive */
+    .card--timezone .card__timeline {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }

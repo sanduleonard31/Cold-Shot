@@ -1,0 +1,419 @@
+/* Archive Page Styles */
+
+/* Filter Controls */
+.archive-filters {
+    max-width: 1400px;
+    margin: 0 auto 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(51, 118, 81, 0.05) 0%, rgba(255, 255, 255, 0.8) 100%);
+    border-radius: var(--border-radius-small);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.archive-filters__title {
+    font-family: var(--font-trade-gothic-bold);
+    font-size: 1.75rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.archive-filters__controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.archive-filters__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.archive-filters__label {
+    font-family: var(--font-trade-gothic-bold);
+    font-size: 0.875rem;
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.archive-filters__select {
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius-extra-small);
+    background-color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.archive-filters__select:hover {
+    border-color: var(--accent-color);
+}
+
+.archive-filters__select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(51, 118, 81, 0.1);
+}
+
+/* Archive Container */
+#archive-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem 3rem;
+}
+
+/* Archive Section (One per row) */
+.archive-section {
+    margin-bottom: 2rem;
+}
+
+.archive-section:last-child {
+    margin-bottom: 0;
+}
+
+/* Projects section - larger spacing between cards */
+.archive-section--projects {
+    margin-bottom: 3rem;
+}
+
+/* Archive Card - Simple Glass Design */
+.archive-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: var(--border-radius-small);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.archive-card:hover {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.85);
+}
+
+/* Archive Card Header - Plain Design */
+.archive-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.archive-card__title {
+    font-family: var(--font-trade-gothic-bold);
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.archive-card__date {
+    font-family: var(--font-trade-gothic);
+    font-size: 0.875rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--border-radius-extra-small);
+    white-space: nowrap;
+}
+
+/* Archive Card Content */
+.archive-card__content {
+    padding: 1.5rem 2rem;
+}
+
+.archive-card__content--column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Profile sections (Editor, Champion, Master Speaks) */
+.archive-card__profile {
+    max-width: 800px;
+}
+
+.archive-card__name {
+    font-family: var(--font-trade-gothic-bold);
+    font-size: 1.125rem;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+}
+
+.archive-card__text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    margin: 0;
+}
+
+/* Images in Archive (Smaller) */
+.archive-card__image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: var(--border-radius-extra-small);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+}
+
+/* Timeline for Changing Timezones */
+.archive-card--timezone .archive-card__timeline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.archive-card__timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.archive-card__timeline-label {
+    font-family: var(--font-trade-gothic-bold);
+    font-size: 1.125rem;
+    color: var(--primary-color);
+    margin: 1rem 0 0.5rem;
+}
+
+.archive-card__timeline-item .archive-card__image {
+    max-width: 200px;
+}
+
+.archive-card__timeline-item .archive-card__text {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* Buttons */
+.archive-card__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--border-radius-extra-small);
+    font-family: var(--font-trade-gothic-bold);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.archive-card__button:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(51, 118, 81, 0.3);
+}
+
+/* List styling */
+.archive-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.archive-card__list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.archive-card__list li::before {
+    content: '☕';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.125rem;
+}
+
+.archive-card__list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Changing Timezones Cards Wrapper - Add spacing between person cards */
+.archive-timezone-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Projects Layout - Desktop: Image left, Text/Button right */
+.archive-card__content--project {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.archive-card__content--project .archive-card__image {
+    flex-shrink: 0;
+    max-width: 350px;
+}
+
+.archive-card__content--project .archive-card__text-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Empty State */
+.archive-empty {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+.archive-empty p {
+    font-size: 1.125rem;
+    margin: 0;
+}
+
+/* Error State */
+.error-message {
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+    border-left: 4px solid #e63946;
+    padding: 1.5rem;
+    border-radius: var(--border-radius-extra-small);
+    margin: 2rem 0;
+}
+
+.error-message h3 {
+    color: #b02b37;
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .archive-filters {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .archive-filters__title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .archive-filters__controls {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    #archive-container {
+        padding: 0 1rem 2rem;
+    }
+
+    .archive-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .archive-card__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1.25rem 1.5rem;
+    }
+
+    .archive-card__title {
+        font-size: 1.25rem;
+    }
+
+    .archive-card__date {
+        font-size: 0.8rem;
+    }
+
+    .archive-card__content {
+        padding: 1.25rem 1.5rem;
+    }
+
+    .archive-card__image {
+        max-width: 250px;
+    }
+
+    .archive-card--timezone .archive-card__timeline {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .archive-card__timeline-item .archive-card__image {
+        max-width: 180px;
+    }
+    
+    /* Projects revert to column layout on tablet */
+    .archive-card__content--project {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .archive-card__content--project .archive-card__image {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .archive-filters {
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .archive-filters__title {
+        font-size: 1.25rem;
+    }
+
+    .archive-filters__select {
+        padding: 0.625rem 0.875rem;
+        font-size: 0.9rem;
+    }
+
+    #archive-container {
+        padding: 0 0.75rem 1.5rem;
+    }
+
+    .archive-card__header {
+        padding: 1rem 1.25rem;
+    }
+
+    .archive-card__title {
+        font-size: 1.125rem;
+    }
+
+    .archive-card__content {
+        padding: 1rem 1.25rem;
+    }
+
+    .archive-card__image {
+        max-width: 200px;
+    }
+
+    .archive-card__text {
+        font-size: 0.9rem;
+    }
+
+    .archive-card__button {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.85rem;
+    }
+    
+    /* Projects remain column layout on mobile */
+    .archive-card__content--project .archive-card__image {
+        max-width: 250px;
+    }
+}

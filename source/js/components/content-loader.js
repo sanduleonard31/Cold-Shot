@@ -259,10 +259,17 @@ class ContentLoader {
         // Special handling for "changing-timezones" with multiple masters
         if (section.id === 'changing-timezones' && data) {
             const masters = this.extractMasters(data);
+            
+            // Create wrapper for timezone cards (matching archive style)
+            const timezonesWrapper = document.createElement('div');
+            timezonesWrapper.className = 'timezone-cards';
+            
             masters.forEach(master => {
                 const card = this.createMasterCard(section, master, path);
-                container.appendChild(card);
+                timezonesWrapper.appendChild(card);
             });
+            
+            container.appendChild(timezonesWrapper);
         } else {
             const card = this.createCard(section, data, media, path);
             container.appendChild(card);
@@ -292,24 +299,23 @@ class ContentLoader {
 
     createMasterCard(section, master, path) {
         const card = document.createElement('article');
-        card.className = `card card--${section.theme}`;
+        card.className = `card card--${section.theme} card--timezone`;
 
         card.innerHTML = `
             <div class="card__header">
-                <h3 class="card__title">${master.name}</h3>
-                <p class="card__subtitle">Journey: ${master.then} - Now</p>
+                <h3 class="card__title">${section.title}: ${master.name}</h3>
             </div>
             <div class="card__content">
-                <div class="master-timeline">
-                    <div class="master-timeline__item">
+                <div class="card__timeline">
+                    <div class="card__timeline-item">
                         <img src="${path}/${master.thenImage}" alt="${master.name} - ${master.then}" class="card__image">
-                        <h4>${master.then}</h4>
-                        <p>${master.thenDesc}</p>
+                        <h4 class="card__timeline-label">${master.then}</h4>
+                        <p class="card__text">${master.thenDesc}</p>
                     </div>
-                    <div class="master-timeline__item">
+                    <div class="card__timeline-item">
                         <img src="${path}/${master.nowImage}" alt="${master.name} - Now" class="card__image">
-                        <h4>Now</h4>
-                        <p>${master.nowDesc}</p>
+                        <h4 class="card__timeline-label">Now</h4>
+                        <p class="card__text">${master.nowDesc}</p>
                     </div>
                 </div>
             </div>
@@ -380,8 +386,8 @@ class ContentLoader {
                     <h3 class="card__title">${section.title}</h3>
                     <p class="card__subtitle">${data.name || ''}</p>
                 </div>
-                <div class="card__content card__content--profile">
-                    ${media.images.length > 0 ? `<img src="${path}/${media.images[0]}" alt="${data.name}" class="card__image card__image--profile">` : ''}
+                <div class="card__content card__content--master-speaks">
+                    ${media.images.length > 0 ? `<img src="${path}/${media.images[0]}" alt="${data.name}" class="card__image card__image--master">` : ''}
                     <blockquote class="card__quote">
                         <p>${data.message || ''}</p>
                     </blockquote>

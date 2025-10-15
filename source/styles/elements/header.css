@@ -283,9 +283,11 @@
         top: 100%;
         left: 0;
         right: 0;
-        background-color: var(--header-background-color);
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         border-bottom: 1px solid var(--header-border);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     .header__navigation.open {
