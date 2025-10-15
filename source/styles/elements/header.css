@@ -50,6 +50,11 @@
     padding: var(--padding-small);
 }
 
+.header__page-link:hover{
+    transform: translateY(4px);
+    transition: all 0.3s ease;
+}
+
 .header__nav-icon{
     height: var(--header-icon-size);
     width: var(--header-icon-size);
