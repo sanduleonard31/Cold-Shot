@@ -24,6 +24,7 @@
     margin: var(--gap-small);
     padding: var(--padding-small);
     border: 5px solid var(--footer-background-color);
+    background-color: var(--footer-background-color);
     align-self: center;
 }
 
