@@ -1,0 +1,415 @@
+{
+  "metadata": {
+    "lastUpdated": "2025-10-15",
+    "version": "1.0",
+    "certificationValidityYears": 2,
+    "description": "Coffee Masters Store Centralization Data"
+  },
+  "districts": [
+    {
+      "id": "district-1",
+      "name": "Downtown District",
+      "code": "DD",
+      "stores": [
+        {
+          "id": "store-dd-001",
+          "name": "Main Street Coffeehouse",
+          "code": "DD001",
+          "address": "123 Main Street",
+          "storeLeader": {
+            "name": "Elena Rodriguez",
+            "role": "Store Manager",
+            "employmentDate": "2021-03-15",
+            "certificationDate": "2023-03-15",
+            "isCertified": true,
+            "certificationExpiry": "2025-03-15"
+          },
+          "masters": [
+            {
+              "name": "Sarah Mitchell",
+              "employmentDate": "2022-01-10",
+              "certificationDate": "2024-01-10",
+              "isCertified": true,
+              "certificationExpiry": "2026-01-10"
+            },
+            {
+              "name": "David Chen",
+              "employmentDate": "2022-06-20",
+              "certificationDate": "2024-06-20",
+              "isCertified": true,
+              "certificationExpiry": "2026-06-20"
+            },
+            {
+              "name": "Maria Santos",
+              "employmentDate": "2023-09-01",
+              "certificationDate": "2025-09-01",
+              "isCertified": false,
+              "certificationExpiry": "2027-09-01"
+            }
+          ]
+        },
+        {
+          "id": "store-dd-002",
+          "name": "Central Hub Café",
+          "code": "DD002",
+          "address": "456 Central Avenue",
+          "storeLeader": {
+            "name": "James Thompson",
+            "role": "Store Manager",
+            "employmentDate": "2020-11-05",
+            "certificationDate": "2022-11-05",
+            "isCertified": true,
+            "certificationExpiry": "2024-11-05"
+          },
+          "masters": [
+            {
+              "name": "Lisa Anderson",
+              "employmentDate": "2021-08-15",
+              "certificationDate": "2023-08-15",
+              "isCertified": true,
+              "certificationExpiry": "2025-08-15"
+            },
+            {
+              "name": "Kevin Park",
+              "employmentDate": "2023-02-28",
+              "certificationDate": "2025-02-28",
+              "isCertified": false,
+              "certificationExpiry": "2027-02-28"
+            },
+            {
+              "name": "Emma Wilson",
+              "employmentDate": "2023-07-12",
+              "certificationDate": "2025-07-12",
+              "isCertified": false,
+              "certificationExpiry": "2027-07-12"
+            },
+            {
+              "name": "Ryan Foster",
+              "employmentDate": "2022-04-03",
+              "certificationDate": "2024-04-03",
+              "isCertified": true,
+              "certificationExpiry": "2026-04-03"
+            }
+          ]
+        },
+        {
+          "id": "store-dd-003",
+          "name": "Plaza Coffee House",
+          "code": "DD003",
+          "address": "789 Plaza Boulevard",
+          "storeLeader": {
+            "name": "Sophia Lee",
+            "role": "Store Manager",
+            "employmentDate": "2021-07-20",
+            "certificationDate": "2023-07-20",
+            "isCertified": true,
+            "certificationExpiry": "2025-07-20"
+          },
+          "masters": [
+            {
+              "name": "Michael Brown",
+              "employmentDate": "2022-11-01",
+              "certificationDate": "2024-11-01",
+              "isCertified": true,
+              "certificationExpiry": "2026-11-01"
+            },
+            {
+              "name": "Ashley Davis",
+              "employmentDate": "2023-05-15",
+              "certificationDate": "2025-05-15",
+              "isCertified": false,
+              "certificationExpiry": "2027-05-15"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "district-2",
+      "name": "Riverside District",
+      "code": "RD",
+      "stores": [
+        {
+          "id": "store-rd-001",
+          "name": "Riverside Roastery",
+          "code": "RD001",
+          "address": "12 River Road",
+          "storeLeader": {
+            "name": "Oliver Martinez",
+            "role": "Store Manager",
+            "employmentDate": "2020-05-10",
+            "certificationDate": "2022-05-10",
+            "isCertified": true,
+            "certificationExpiry": "2024-05-10"
+          },
+          "masters": [
+            {
+              "name": "Isabella Garcia",
+              "employmentDate": "2021-09-20",
+              "certificationDate": "2023-09-20",
+              "isCertified": true,
+              "certificationExpiry": "2025-09-20"
+            },
+            {
+              "name": "Ethan White",
+              "employmentDate": "2022-12-05",
+              "certificationDate": "2024-12-05",
+              "isCertified": true,
+              "certificationExpiry": "2026-12-05"
+            },
+            {
+              "name": "Olivia Taylor",
+              "employmentDate": "2023-03-18",
+              "certificationDate": "2025-03-18",
+              "isCertified": false,
+              "certificationExpiry": "2027-03-18"
+            },
+            {
+              "name": "Noah Johnson",
+              "employmentDate": "2023-08-22",
+              "certificationDate": "2025-08-22",
+              "isCertified": false,
+              "certificationExpiry": "2027-08-22"
+            },
+            {
+              "name": "Ava Martinez",
+              "employmentDate": "2021-11-30",
+              "certificationDate": "2023-11-30",
+              "isCertified": true,
+              "certificationExpiry": "2025-11-30"
+            }
+          ]
+        },
+        {
+          "id": "store-rd-002",
+          "name": "Waterfront Beans",
+          "code": "RD002",
+          "address": "34 Waterfront Drive",
+          "storeLeader": {
+            "name": "Charlotte Moore",
+            "role": "Store Manager",
+            "employmentDate": "2021-02-14",
+            "certificationDate": "2023-02-14",
+            "isCertified": true,
+            "certificationExpiry": "2025-02-14"
+          },
+          "masters": [
+            {
+              "name": "Liam Jackson",
+              "employmentDate": "2022-05-08",
+              "certificationDate": "2024-05-08",
+              "isCertified": true,
+              "certificationExpiry": "2026-05-08"
+            },
+            {
+              "name": "Mia Robinson",
+              "employmentDate": "2023-01-25",
+              "certificationDate": "2025-01-25",
+              "isCertified": false,
+              "certificationExpiry": "2027-01-25"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "district-3",
+      "name": "Northside District",
+      "code": "ND",
+      "stores": [
+        {
+          "id": "store-nd-001",
+          "name": "North Corner Café",
+          "code": "ND001",
+          "address": "567 North Avenue",
+          "storeLeader": {
+            "name": "Benjamin Harris",
+            "role": "Store Manager",
+            "employmentDate": "2020-08-25",
+            "certificationDate": "2022-08-25",
+            "isCertified": true,
+            "certificationExpiry": "2024-08-25"
+          },
+          "masters": [
+            {
+              "name": "Emma Thompson",
+              "employmentDate": "2021-10-12",
+              "certificationDate": "2023-10-12",
+              "isCertified": true,
+              "certificationExpiry": "2025-10-12"
+            },
+            {
+              "name": "William Clark",
+              "employmentDate": "2022-03-30",
+              "certificationDate": "2024-03-30",
+              "isCertified": true,
+              "certificationExpiry": "2026-03-30"
+            },
+            {
+              "name": "Sophia Lewis",
+              "employmentDate": "2023-06-14",
+              "certificationDate": "2025-06-14",
+              "isCertified": false,
+              "certificationExpiry": "2027-06-14"
+            }
+          ]
+        },
+        {
+          "id": "store-nd-002",
+          "name": "Highland Brew",
+          "code": "ND002",
+          "address": "890 Highland Street",
+          "storeLeader": {
+            "name": "Amelia Walker",
+            "role": "Store Manager",
+            "employmentDate": "2021-04-18",
+            "certificationDate": "2023-04-18",
+            "isCertified": true,
+            "certificationExpiry": "2025-04-18"
+          },
+          "masters": [
+            {
+              "name": "James Hall",
+              "employmentDate": "2022-07-22",
+              "certificationDate": "2024-07-22",
+              "isCertified": true,
+              "certificationExpiry": "2026-07-22"
+            },
+            {
+              "name": "Isabella Young",
+              "employmentDate": "2023-02-09",
+              "certificationDate": "2025-02-09",
+              "isCertified": false,
+              "certificationExpiry": "2027-02-09"
+            },
+            {
+              "name": "Lucas Allen",
+              "employmentDate": "2023-09-28",
+              "certificationDate": "2025-09-28",
+              "isCertified": false,
+              "certificationExpiry": "2027-09-28"
+            }
+          ]
+        },
+        {
+          "id": "store-nd-003",
+          "name": "Summit Coffee Co",
+          "code": "ND003",
+          "address": "234 Summit Lane",
+          "storeLeader": {
+            "name": "Elijah King",
+            "role": "Store Manager",
+            "employmentDate": "2020-12-01",
+            "certificationDate": "2022-12-01",
+            "isCertified": true,
+            "certificationExpiry": "2024-12-01"
+          },
+          "masters": [
+            {
+              "name": "Harper Wright",
+              "employmentDate": "2021-06-17",
+              "certificationDate": "2023-06-17",
+              "isCertified": true,
+              "certificationExpiry": "2025-06-17"
+            },
+            {
+              "name": "Mason Scott",
+              "employmentDate": "2022-09-05",
+              "certificationDate": "2024-09-05",
+              "isCertified": true,
+              "certificationExpiry": "2026-09-05"
+            },
+            {
+              "name": "Evelyn Green",
+              "employmentDate": "2023-04-20",
+              "certificationDate": "2025-04-20",
+              "isCertified": false,
+              "certificationExpiry": "2027-04-20"
+            },
+            {
+              "name": "Logan Adams",
+              "employmentDate": "2021-12-08",
+              "certificationDate": "2023-12-08",
+              "isCertified": true,
+              "certificationExpiry": "2025-12-08"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "district-4",
+      "name": "Eastside District",
+      "code": "ED",
+      "stores": [
+        {
+          "id": "store-ed-001",
+          "name": "East Bay Coffee",
+          "code": "ED001",
+          "address": "101 East Street",
+          "storeLeader": {
+            "name": "Aria Baker",
+            "role": "Store Manager",
+            "employmentDate": "2021-01-05",
+            "certificationDate": "2023-01-05",
+            "isCertified": true,
+            "certificationExpiry": "2025-01-05"
+          },
+          "masters": [
+            {
+              "name": "Alexander Nelson",
+              "employmentDate": "2022-02-14",
+              "certificationDate": "2024-02-14",
+              "isCertified": true,
+              "certificationExpiry": "2026-02-14"
+            },
+            {
+              "name": "Mia Carter",
+              "employmentDate": "2023-07-30",
+              "certificationDate": "2025-07-30",
+              "isCertified": false,
+              "certificationExpiry": "2027-07-30"
+            }
+          ]
+        },
+        {
+          "id": "store-ed-002",
+          "name": "Sunrise Espresso",
+          "code": "ED002",
+          "address": "456 Sunrise Boulevard",
+          "storeLeader": {
+            "name": "Sebastian Mitchell",
+            "role": "Store Manager",
+            "employmentDate": "2020-09-12",
+            "certificationDate": "2022-09-12",
+            "isCertified": true,
+            "certificationExpiry": "2024-09-12"
+          },
+          "masters": [
+            {
+              "name": "Victoria Perez",
+              "employmentDate": "2021-11-23",
+              "certificationDate": "2023-11-23",
+              "isCertified": true,
+              "certificationExpiry": "2025-11-23"
+            },
+            {
+              "name": "Daniel Roberts",
+              "employmentDate": "2022-08-16",
+              "certificationDate": "2024-08-16",
+              "isCertified": true,
+              "certificationExpiry": "2026-08-16"
+            },
+            {
+              "name": "Grace Turner",
+              "employmentDate": "2023-03-07",
+              "certificationDate": "2025-03-07",
+              "isCertified": false,
+              "certificationExpiry": "2027-03-07"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
