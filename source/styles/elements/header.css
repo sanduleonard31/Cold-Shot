@@ -1,91 +1,339 @@
-.header-container{
+/* Header Container */
+.header-container {
     position: fixed;
     top: 0;
     left: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    background-color: var(--header-background-color);
-    color: var(--header-text-color);
-    border: 1px solid var(--header-border);
-    border-radius: 0 0 var(--border-radius-small) var(--border-radius-small);
-    backdrop-filter: blur(var(--blur-intensity));
-
-    box-shadow: var(--header-box-shadow);
-    padding: var(--padding-medium);
-    height: var(--header-height);
+    right: 0;
+    z-index: var(--z-index-sticky);
     width: 100%;
+    background-color: var(--header-background-color);
+    border-bottom: 1px solid var(--header-border);
+    backdrop-filter: blur(var(--blur-intensity));
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
 }
 
-.header__logo-page-link{
+.header-container.scrolled {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Header Content Wrapper */
+.header__content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: var(--header-height);
     display: flex;
-    flex-direction: row;
     align-items: center;
-    gap: var(--gap-small);
+    justify-content: space-between;
+    gap: 2rem;
 }
 
-.header__logo-icon{
-    height: var(--header-icon-size);
-    width: var(--header-icon-size);
+/* Skip Link for Accessibility */
+.header__skip-link {
+    position: absolute;
+    left: -9999px;
+    z-index: 999;
+    padding: 1rem 1.5rem;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    text-decoration: none;
+    border-radius: var(--border-radius-extra-small);
+    font-weight: 600;
 }
 
-.header__logo-text{
+.header__skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+}
+
+/* Brand / Logo Section */
+.header__brand {
+    flex-shrink: 0;
+}
+
+.header__logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.header__logo-link:hover {
+    opacity: 0.8;
+}
+
+.header__logo-link:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
+    border-radius: var(--border-radius-extra-small);
+}
+
+.header__logo-icon {
+    height: 2.5rem;
+    width: 2.5rem;
+    display: block;
+}
+
+.header__logo-text {
     color: var(--header-text-color);
     font-size: 1.5rem;
     font-weight: bold;
+    font-family: var(--font-trade-gothic-bold);
+    letter-spacing: 0.5px;
 }
 
-.header__navigation{
+/* Main Navigation */
+.header__navigation {
+    flex: 1;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: var(--gap-large);
+    justify-content: flex-end;
 }
-.header__page-link{
+
+.header__nav-list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header__nav-item {
+    margin: 0;
+}
+
+/* Navigation Links */
+.header__nav-link {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--gap-small);
-    padding: var(--padding-small);
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    text-decoration: none;
+    border-radius: var(--border-radius-extra-small);
+    transition: all 0.2s ease;
+    position: relative;
 }
 
-.header__page-link:hover{
-    transform: translateY(4px);
+.header__nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.header__nav-link:hover,
+.header__nav-link:focus-visible {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.header__nav-link:hover::after {
+    width: 80%;
+}
+
+.header__nav-link:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Active state - add this class with JavaScript */
+.header__nav-link.active {
+    background-color: rgba(51, 118, 81, 0.1);
+}
+
+.header__nav-link.active::after {
+    width: 80%;
+}
+
+.header__nav-icon {
+    height: 1.5rem;
+    width: 1.5rem;
+    display: block;
+    filter: var(--icon-filter);
+    transition: transform 0.2s ease;
+}
+
+.header__nav-link:hover .header__nav-icon {
+    transform: translateY(-2px);
+}
+
+.header__link-label {
+    color: var(--header-text-color);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+/* Mobile Menu Toggle */
+.header__menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--border-radius-extra-small);
+    transition: background-color 0.2s ease;
+}
+
+.header__menu-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.header__menu-toggle:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.header__menu-icon {
+    position: relative;
+    width: 1.5rem;
+    height: 2px;
+    background-color: var(--header-text-color);
+    transition: background-color 0.3s ease;
+}
+
+.header__menu-icon::before,
+.header__menu-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--header-text-color);
     transition: all 0.3s ease;
 }
 
-.header__nav-icon{
-    height: var(--header-icon-size);
-    width: var(--header-icon-size);
+.header__menu-icon::before {
+    top: -6px;
 }
-.header__link-label{
-    color: var(--header-text-color);
-    font-size: 0.875rem;
+
+.header__menu-icon::after {
+    top: 6px;
+}
+
+/* Mobile menu open state */
+.header__menu-toggle[aria-expanded="true"] .header__menu-icon {
+    background-color: transparent;
+}
+
+.header__menu-toggle[aria-expanded="true"] .header__menu-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.header__menu-toggle[aria-expanded="true"] .header__menu-icon::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header__content {
+        padding: 0 1.5rem;
+        height: var(--header-height-phone);
+    }
+
+    .header__logo-icon {
+        height: 2rem;
+        width: 2rem;
+    }
+
+    .header__logo-text {
+        font-size: 1.25rem;
+    }
+
+    .header__nav-list {
+        gap: 0.25rem;
+    }
+
+    .header__nav-link {
+        padding: 0.375rem 0.5rem;
+    }
+
+    .header__nav-icon {
+        height: 1.25rem;
+        width: 1.25rem;
+    }
+
+    .header__link-label {
+        font-size: 0.625rem;
+    }
 }
 
 @media (max-width: 600px) {
-    .header-container{
-        height: var(--header-height-phone);
-        padding: var(--padding-small);
+    .header__content {
+        padding: 0 1rem;
     }
 
-    .header__page-link{
+    .header__navigation {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--header-background-color);
+        border-bottom: 1px solid var(--header-border);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .header__navigation.open {
+        display: block;
+    }
+
+    .header__nav-list {
+        flex-direction: column;
         gap: 0;
-        padding: var(--padding-small);
+        padding: 0.5rem 0;
     }
 
-
-    .header__nav-icon{
-        height: var(--header-icon-size-phone);
-        width: var(--header-icon-size-phone);
+    .header__nav-item {
+        width: 100%;
     }
 
-    .header__logo-text{
-        font-size: 1rem;
+    .header__nav-link {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+        border-radius: 0;
     }
 
-    .header__link-label{
-        font-size: 0.5rem;
+    .header__nav-link::after {
+        display: none;
+    }
+
+    .header__nav-icon {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    .header__link-label {
+        font-size: 0.875rem;
+        text-align: left;
+    }
+
+    .header__menu-toggle {
+        display: flex;
+    }
+
+    .header__logo-icon {
+        height: 1.75rem;
+        width: 1.75rem;
+    }
+
+    .header__logo-text {
+        font-size: 1.125rem;
     }
 }

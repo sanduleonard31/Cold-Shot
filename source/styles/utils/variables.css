@@ -14,7 +14,7 @@
     /* Header specific */
     --header-height: 4rem; --header-height-phone: 2.5rem;
     --header-icon-size: 1.5rem; --header-icon-size-phone: 1rem;
-    --header-background-color: var(--glass-color);
+    --header-background-color: var(--glass-color-frosted);
     --header-border: var(--glass-border);
     --header-text-color: var(--text-color);
     --z-index-sticky: 1000;
@@ -25,16 +25,17 @@
 
     /* Footer specific */
     --footer-height: 15rem; --footer-height-phone: 5rem;
-    --footer-icon-size: 3rem; --footer-icon-size-phone: 2rem;
+    --footer-icon-size: 2rem; --footer-icon-size-phone: 1.5rem;
     --footer-background-color: var(--accent-color);
     --footer-background-color-hover: var(--primary-color);
-    --footer-text-color: var(--text-color);
+    --footer-text-color: var(--background-color);
     --footer-text-color-hover: var(--background-color);
     --footer-border: var(--border-color);
 
     /* Glassmorphism */
-    --glass-color: rgba(255, 255, 255, 0.4);
-    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-color: rgba(255, 255, 255, 0.2);
+    --glass-color-frosted: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.4);
     --blur-intensity: 3px;
 
     /* Shadows */
@@ -64,6 +65,7 @@
     --padding-small: 0.33rem;
     --padding-medium: 0.66rem;
     --padding-large: 1rem;
+    --padding-extra-large: 1.5rem;
 
     --margin-small: 1rem;
     --margin-medium: 2rem;

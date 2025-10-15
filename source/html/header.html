@@ -1,31 +1,49 @@
-<div class="header-container">
-<!------------------------------------------------------------------------------------------------------->
-<a href="index.html" class="header__logo-page-link">
-    <img src="assets/logo/logo-mug-broken.svg" alt="Cold Shot Logo" class="header__logo-icon">
-    <p class="header__logo-text">Cold Shot</p>
-</a>
-<!------------------------------------------------------------------------------------------------------->
-<nav class="header__navigation">
-    <!--------------------------------------------------------------------------------------------------->
-    <a href="home.html" class="header__page-link">
-        <img src="assets/icons/home.svg" alt="Home" class="header__nav-icon">
-        <p class="header__link-label">Home</p>
-    </a>
-    <!--------------------------------------------------------------------------------------------------->
-    <a href="archive.html" class="header__page-link">
-        <img src="assets/icons/date.svg" alt="Archive" class="header__nav-icon">
-        <p class="header__link-label">Archive</p>
-    </a>
-    <!--------------------------------------------------------------------------------------------------->
-    <a href="masters.html" class="header__page-link">
-        <img src="assets/icons/users.svg" alt="Masters" class="header__nav-icon">
-        <p class="header__link-label">Masters</p>
-    </a>
-    <!--------------------------------------------------------------------------------------------------->
-    <a href="settings.html" class="header__page-link">
-        <img src="assets/icons/settings-slider.svg" alt="Settings" class="header__nav-icon">
-        <p class="header__link-label">Settings</p>
-    </a>
-    <!--------------------------------------------------------------------------------------------------->
-</nav>
-</div>
+<header class="header-container">
+    <div class="header__content">
+        <!-- Skip to main content for accessibility -->
+        <a href="#main-content" class="header__skip-link">Skip to main content</a>
+
+        <!-- Logo / Brand -->
+        <div class="header__brand">
+            <a href="index.html" class="header__logo-link" aria-label="Cold Shot - Home">
+                <img src="assets/logo/logo-mug-broken.svg" alt="" class="header__logo-icon" aria-hidden="true">
+                <span class="header__logo-text">Cold Shot</span>
+            </a>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="header__navigation" aria-label="Main navigation">
+            <ul class="header__nav-list">
+                <li class="header__nav-item">
+                    <a href="home.html" class="header__nav-link">
+                        <img src="assets/icons/home.svg" alt="" class="header__nav-icon" aria-hidden="true">
+                        <span class="header__link-label">Home</span>
+                    </a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="archive.html" class="header__nav-link">
+                        <img src="assets/icons/date.svg" alt="" class="header__nav-icon" aria-hidden="true">
+                        <span class="header__link-label">Archive</span>
+                    </a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="masters.html" class="header__nav-link">
+                        <img src="assets/icons/users.svg" alt="" class="header__nav-icon" aria-hidden="true">
+                        <span class="header__link-label">Masters</span>
+                    </a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="settings.html" class="header__nav-link">
+                        <img src="assets/icons/settings-slider.svg" alt="" class="header__nav-icon" aria-hidden="true">
+                        <span class="header__link-label">Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Mobile Menu Toggle (for future enhancement) -->
+        <button class="header__menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span class="header__menu-icon"></span>
+        </button>
+    </div>
+</header>

@@ -2,15 +2,7 @@ class MyFooter extends HTMLElement{
     connectedCallback(){
         // Determine path based on current location
         const currentPath = window.location.pathname;
-        let footerPath;
-        
-        // If we're in a subdirectory (contains /source/html/pages/)
-        if (currentPath.includes('/source/html/pages/')) {
-            footerPath = '../components/footer.html';
-        } else {
-            // We're at root level
-            footerPath = './source/html/components/footer.html';
-        }
+        let footerPath = './source/html/footer.html';
 
         fetch(footerPath)
             .then(res => {
