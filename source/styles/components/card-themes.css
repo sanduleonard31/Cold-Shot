@@ -163,7 +163,7 @@
     gap: 2rem;
     align-items: flex-start;
     margin-bottom: 1rem;
-    flex-direction: row;
+    flex-direction: row !important; /* Force horizontal on desktop */
 }
 
 /* Standard image styling for sections (not profile/master) */
@@ -310,16 +310,6 @@
     .card__quote::before {
         font-size: 2.5rem;
     }
-
-    /* Media-text wrapper becomes column on tablet */
-    .card__media-text-wrapper {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card__media-text-wrapper .card__image {
-        margin: 0 auto 1.5rem;
-    }
 }
 
 @media (max-width: 480px) {
@@ -343,6 +333,16 @@
 
     .card__quote::before {
         font-size: 2rem;
+    }
+
+    /* Media-text wrapper becomes column on mobile only */
+    .card__media-text-wrapper {
+        flex-direction: column !important;
+        align-items: center;
+    }
+
+    .card__media-text-wrapper .card__image {
+        margin: 0 auto 1.5rem;
     }
 }
 

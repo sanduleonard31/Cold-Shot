@@ -15,7 +15,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -30,7 +30,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -53,7 +53,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -76,7 +76,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -101,13 +101,6 @@
               "certificationDate": null,
               "isCertified": true,
               "certificationExpiry": null
-            },
-            {
-              "name": "Grigoras Daniela",
-              "employmentDate": null,
-              "certificationDate": null,
-              "isCertified": true,
-              "certificationExpiry": null
             }
           ]
         },
@@ -121,7 +114,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -158,7 +151,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -181,7 +174,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -244,13 +237,6 @@
               "certificationExpiry": null
             },
             {
-              "name": "Dicu Marius",
-              "employmentDate": null,
-              "certificationDate": null,
-              "isCertified": true,
-              "certificationExpiry": null
-            },
-            {
               "name": "Beatrice Dudau",
               "employmentDate": null,
               "certificationDate": null,
@@ -283,7 +269,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -302,13 +288,6 @@
             "certificationExpiry": null
           },
           "masters": [
-            {
-              "name": "Crivat Gabriela",
-              "employmentDate": null,
-              "certificationDate": null,
-              "isCertified": true,
-              "certificationExpiry": null
-            },
             {
               "name": "Adriana Ionela",
               "employmentDate": null,
@@ -335,7 +314,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -358,7 +337,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -377,13 +356,6 @@
             "certificationExpiry": null
           },
           "masters": [
-            {
-              "name": "Filip Munteanu",
-              "employmentDate": null,
-              "certificationDate": null,
-              "isCertified": true,
-              "certificationExpiry": null
-            },
             {
               "name": "Adrian Balca",
               "employmentDate": null,
@@ -424,7 +396,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -443,13 +415,6 @@
             "certificationExpiry": null
           },
           "masters": [
-            {
-              "name": "Micloi Adrian Daniel",
-              "employmentDate": null,
-              "certificationDate": null,
-              "isCertified": true,
-              "certificationExpiry": null
-            },
             {
               "name": "Vilcereanu George Gabriel",
               "employmentDate": null,
@@ -473,13 +438,6 @@
             "certificationExpiry": null
           },
           "masters": [
-            {
-              "name": "Buzatu Stefan",
-              "employmentDate": null,
-              "certificationDate": null,
-              "isCertified": true,
-              "certificationExpiry": null
-            },
             {
               "name": "Dinca Andreea",
               "employmentDate": null,
@@ -506,7 +464,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -529,7 +487,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -544,7 +502,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -567,7 +525,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -582,7 +540,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -605,7 +563,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -627,7 +585,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -650,7 +608,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -680,7 +638,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -703,7 +661,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -740,7 +698,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -755,7 +713,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -770,7 +728,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -793,7 +751,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -815,7 +773,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -830,7 +788,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -863,15 +821,7 @@
             "isCertified": true,
             "certificationExpiry": null
           },
-          "masters": [
-            {
-              "name": "Trasca Bianca",
-              "employmentDate": null,
-              "certificationDate": null,
-              "isCertified": true,
-              "certificationExpiry": null
-            }
-          ]
+          "masters": []
         },
         {
           "id": "store-ro5-004",
@@ -883,7 +833,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -898,7 +848,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -928,7 +878,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -943,7 +893,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -966,7 +916,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -996,7 +946,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -1022,15 +972,7 @@
             "isCertified": true,
             "certificationExpiry": null
           },
-          "masters": [
-            {
-              "name": "Ciorciovel Robert",
-              "employmentDate": null,
-              "certificationDate": null,
-              "isCertified": true,
-              "certificationExpiry": null
-            }
-          ]
+          "masters": []
         },
         {
           "id": "store-ro6-003",
@@ -1042,7 +984,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -1072,7 +1014,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -1095,7 +1037,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -1110,7 +1052,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -1125,7 +1067,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -1140,7 +1082,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -1168,13 +1110,6 @@
           },
           "masters": [
             {
-              "name": "Cernea Gabriela Lavinia",
-              "employmentDate": null,
-              "certificationDate": null,
-              "isCertified": true,
-              "certificationExpiry": null
-            },
-            {
               "name": "Chiva Aida Steluta",
               "employmentDate": null,
               "certificationDate": null,
@@ -1200,7 +1135,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -1222,7 +1157,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -1237,7 +1172,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -1284,15 +1219,7 @@
             "isCertified": true,
             "certificationExpiry": null
           },
-          "masters": [
-            {
-              "name": "Razvan Lingurar",
-              "employmentDate": null,
-              "certificationDate": null,
-              "isCertified": true,
-              "certificationExpiry": null
-            }
-          ]
+          "masters": []
         },
         {
           "id": "store-ro7-004",
@@ -1304,7 +1231,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -1319,7 +1246,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -1334,7 +1261,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -1349,7 +1276,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -1379,7 +1306,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -1398,13 +1325,6 @@
             "certificationExpiry": null
           },
           "masters": [
-            {
-              "name": "Giurca Claudiu",
-              "employmentDate": null,
-              "certificationDate": null,
-              "isCertified": true,
-              "certificationExpiry": null
-            },
             {
               "name": "Ciohodaru Miruna",
               "employmentDate": null,
@@ -1445,7 +1365,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": []
@@ -1460,7 +1380,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -1490,7 +1410,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -1520,7 +1440,7 @@
             "role": "Store Manager",
             "employmentDate": null,
             "certificationDate": null,
-            "isCertified": true,
+            "isCertified": false,
             "certificationExpiry": null
           },
           "masters": [
@@ -1546,15 +1466,7 @@
             "isCertified": true,
             "certificationExpiry": null
           },
-          "masters": [
-            {
-              "name": "Lazar Luciana Andreea",
-              "employmentDate": null,
-              "certificationDate": null,
-              "isCertified": true,
-              "certificationExpiry": null
-            }
-          ]
+          "masters": []
         }
       ]
     }
