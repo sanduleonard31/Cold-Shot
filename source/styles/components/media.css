@@ -131,8 +131,8 @@
 }
 
 .page-header__icon {
-    width: 2rem;
-    height: 2rem;
+    width: 2rem !important;
+    height: 2rem !important;
     margin-bottom: 0.5rem;
     filter: var(--icon-filter);
     display: inline-block;
