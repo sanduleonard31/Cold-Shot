@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="stylesheet" href="./source/styles/global.css">
+    <title>Header Test</title>
+    <style>
+        body {
+            padding: 2rem;
+        }
+        .test-info {
+            margin: 2rem;
+            padding: 1rem;
+            background: #f0f0f0;
+            border-radius: 8px;
+        }
+        .test-info h2 {
+            margin: 0 0 1rem 0;
+        }
+        .test-info ul {
+            list-style: disc;
+            margin-left: 2rem;
+        }
+    </style>
+</head>
+<body>
+<loaded-header></loaded-header>
+
+<main>
+    <div class="test-info">
+        <h2>Header Navigation Test</h2>
+        <p>This page is for testing the header navigation. You should see the following navigation items:</p>
+        <ul>
+            <li>Home</li>
+            <li>Archive</li>
+            <li>Masters</li>
+            <li>Media</li>
+            <li><strong>International (NEW)</strong></li>
+        </ul>
+        <p><strong>If you don't see the International link, please:</strong></p>
+        <ol style="list-style: decimal; margin-left: 2rem;">
+            <li>Hard refresh the page (Cmd+Shift+R on Mac, Ctrl+Shift+R on Windows)</li>
+            <li>Clear your browser cache</li>
+            <li>Open in an incognito/private window</li>
+        </ol>
+        <p style="margin-top: 1rem;">
+            <a href="international.html" style="padding: 0.5rem 1rem; background: var(--accent-color, #337651); color: white; text-decoration: none; border-radius: 4px; display: inline-block;">
+                Go to International Page →
+            </a>
+        </p>
+    </div>
+</main>
+
+<script src="./source/js/components/header-loader.js"></script>
+</body>
+</html>
