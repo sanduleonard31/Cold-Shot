@@ -63,14 +63,9 @@ class ContentLoader {
         // Add native lazy loading as fallback
         img.setAttribute('loading', 'lazy');
         
-        // Add decoding attribute for better performance
-        img.setAttribute('decoding', 'async');
-        
-        // Set loading spinner as placeholder
+        // Set a lightweight placeholder
         if (typeof LazyLoader !== 'undefined') {
-            img.src = LazyLoader.createLoadingSpinner(50, '#4a90e2');
-            img.style.padding = '20px';
-            img.style.backgroundColor = '#f5f5f5';
+            img.src = LazyLoader.createImagePlaceholder(400, 300);
         }
         
         return img;
@@ -81,14 +76,11 @@ class ContentLoader {
             // Remove loading spinner
             const loadingSpinner = this.contentContainer?.querySelector('.loading-spinner');
             
-            // Initialize lazy loader with optimized settings for performance
+            // Initialize lazy loader
             if (typeof LazyLoader !== 'undefined') {
                 this.lazyLoader = new LazyLoader({
-                    rootMargin: '300px',
-                    threshold: 0.01,
-                    lowQualityDelay: 150,
-                    highQualityDelay: 400,
-                    enableProgressiveLoading: true
+                    rootMargin: '100px',
+                    threshold: 0.01
                 });
                 this.lazyLoader.init();
             }
@@ -442,12 +434,12 @@ class ContentLoader {
             <div class="card__content">
                 <div class="card__timeline">
                     <div class="card__timeline-item">
-                        <img data-src="${path}/${master.thenImage}" alt="${master.name} - ${master.then}" class="card__image lazy-image" loading="lazy" decoding="async" decoding="async" src="${LazyLoader.createLoadingSpinner(50, "#4a90e2")}">
+                        <img data-src="${path}/${master.thenImage}" alt="${master.name} - ${master.then}" class="card__image lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">
                         <h4 class="card__timeline-label">${master.then}</h4>
                         <p class="card__text">${master.thenDesc}</p>
                     </div>
                     <div class="card__timeline-item">
-                        <img data-src="${path}/${master.nowImage}" alt="${master.name} - Now" class="card__image lazy-image" loading="lazy" decoding="async" decoding="async" src="${LazyLoader.createLoadingSpinner(50, "#4a90e2")}">
+                        <img data-src="${path}/${master.nowImage}" alt="${master.name} - Now" class="card__image lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">
                         <h4 class="card__timeline-label">Now</h4>
                         <p class="card__text">${master.nowDesc}</p>
                     </div>
@@ -467,7 +459,7 @@ class ContentLoader {
         // Handle different section types
         if (section.id === 'champion' && data) {
             const imgHTML = media.images.length > 0 
-                ? `<img data-src="${path}/${media.images[0]}" alt="${data.title}" class="card__image card__image--profile lazy-image" loading="lazy" decoding="async" decoding="async" src="${LazyLoader.createLoadingSpinner(50, "#4a90e2")}">` 
+                ? `<img data-src="${path}/${media.images[0]}" alt="${data.title}" class="card__image card__image--profile lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">` 
                 : '';
             content = `
                 <div class="card__header">
@@ -484,7 +476,7 @@ class ContentLoader {
             `;
         } else if (section.id === 'editor' && data) {
             const imgHTML = media.images.length > 0 
-                ? `<img data-src="${path}/${media.images[0]}" alt="${data.title}" class="card__image card__image--profile lazy-image" loading="lazy" decoding="async" decoding="async" src="${LazyLoader.createLoadingSpinner(50, "#4a90e2")}">` 
+                ? `<img data-src="${path}/${media.images[0]}" alt="${data.title}" class="card__image card__image--profile lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">` 
                 : '';
             content = `
                 <div class="card__header">
@@ -502,7 +494,7 @@ class ContentLoader {
         } else if (section.id === 'knowledge-bites' && data) {
             const bites = data.bites || [];
             const imgHTML = media.images.length > 0 
-                ? `<img data-src="${path}/${media.images[0]}" alt="${section.title}" class="card__image lazy-image" loading="lazy" decoding="async" decoding="async" src="${LazyLoader.createLoadingSpinner(50, "#4a90e2")}">` 
+                ? `<img data-src="${path}/${media.images[0]}" alt="${section.title}" class="card__image lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">` 
                 : '';
             content = `
                 <div class="card__header">
@@ -527,7 +519,7 @@ class ContentLoader {
             `;
         } else if (section.id === 'spread-kindness' && data) {
             const imgHTML = media.images.length > 0 
-                ? `<img data-src="${path}/${media.images[0]}" alt="${section.title}" class="card__image lazy-image" loading="lazy" decoding="async" src="${LazyLoader.createLoadingSpinner(50, "#4a90e2")}">` 
+                ? `<img data-src="${path}/${media.images[0]}" alt="${section.title}" class="card__image lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">` 
                 : '';
             content = `
                 <div class="card__header">
@@ -548,7 +540,7 @@ class ContentLoader {
             `;
         } else if (section.id === 'master-speaks' && data) {
             const imgHTML = media.images.length > 0 
-                ? `<img data-src="${path}/${media.images[0]}" alt="${data.name}" class="card__image card__image--profile lazy-image" loading="lazy" decoding="async" src="${LazyLoader.createLoadingSpinner(50, "#4a90e2")}">` 
+                ? `<img data-src="${path}/${media.images[0]}" alt="${data.name}" class="card__image card__image--profile lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">` 
                 : '';
             content = `
                 <div class="card__header">
@@ -565,7 +557,7 @@ class ContentLoader {
             `;
         } else if (section.id === 'matcha-zone' && data) {
             const imgHTML = media.images.length > 0 
-                ? `<img data-src="${path}/${media.images[0]}" alt="${section.title}" class="card__image lazy-image" loading="lazy" decoding="async" src="${LazyLoader.createLoadingSpinner(50, "#4a90e2")}">` 
+                ? `<img data-src="${path}/${media.images[0]}" alt="${section.title}" class="card__image lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">` 
                 : '';
             content = `
                 <div class="card__header">
@@ -585,7 +577,7 @@ class ContentLoader {
         } else {
             // Generic card template
             const imgHTML = media.images.length > 0 
-                ? `<img data-src="${path}/${media.images[0]}" alt="${section.title}" class="card__image lazy-image" loading="lazy" decoding="async" src="${LazyLoader.createLoadingSpinner(50, "#4a90e2")}">` 
+                ? `<img data-src="${path}/${media.images[0]}" alt="${section.title}" class="card__image lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">` 
                 : '';
             content = `
                 <div class="card__header">
@@ -709,7 +701,7 @@ class ContentLoader {
         const card = document.createElement('article');
         card.className = `card card--${theme}`;
         const imgHTML = media.images.length > 0 
-            ? `<img data-src="${project.path}/${media.images[0]}" alt="${project.name}" class="card__image lazy-image" loading="lazy" decoding="async" src="${LazyLoader.createLoadingSpinner(50, "#4a90e2")}">` 
+            ? `<img data-src="${project.path}/${media.images[0]}" alt="${project.name}" class="card__image lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">` 
             : '';
         card.innerHTML = `
             <div class="card__header">
@@ -748,7 +740,7 @@ class ContentLoader {
             const card = document.createElement('article');
             card.className = `card card--${section.theme}`;
             const imgHTML = item.media.images.length > 0 
-                ? `<img data-src="${item.path}/${item.media.images[0]}" alt="${item.name}" class="card__image lazy-image" loading="lazy" decoding="async" src="${LazyLoader.createLoadingSpinner(50, "#4a90e2")}">` 
+                ? `<img data-src="${item.path}/${item.media.images[0]}" alt="${item.name}" class="card__image lazy-image" loading="lazy" src="${LazyLoader.createImagePlaceholder(400, 300)}">` 
                 : '';
             
             card.innerHTML = `

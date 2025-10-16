@@ -20,14 +20,11 @@ class ArchiveLoader {
 
     async init() {
         try {
-            // Initialize lazy loader with optimized settings
+            // Initialize lazy loader
             if (typeof LazyLoader !== 'undefined') {
                 this.lazyLoader = new LazyLoader({
-                    rootMargin: '300px',
-                    threshold: 0.01,
-                    lowQualityDelay: 150,
-                    highQualityDelay: 400,
-                    enableProgressiveLoading: true
+                    rootMargin: '100px',
+                    threshold: 0.01
                 });
                 this.lazyLoader.init();
             }
@@ -650,9 +647,9 @@ class ArchiveLoader {
      */
     createLazyImageHTML(src, alt = '', cssClass = 'archive-card__image') {
         const placeholder = typeof LazyLoader !== 'undefined' 
-            ? LazyLoader.createLoadingSpinner(50, "#4a90e2") 
+            ? LazyLoader.createImagePlaceholder(400, 300) 
             : '';
-        return `<img data-src="${src}" alt="${alt}" class="${cssClass} lazy-image" loading="lazy" decoding="async" src="${placeholder}">`;
+        return `<img data-src="${src}" alt="${alt}" class="${cssClass} lazy-image" loading="lazy" src="${placeholder}">`;
     }
 
     renderProjectsSection(section, content, path, monthLabel) {
