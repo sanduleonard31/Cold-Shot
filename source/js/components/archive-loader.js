@@ -647,7 +647,7 @@ class ArchiveLoader {
      */
     createLazyImageHTML(src, alt = '', cssClass = 'archive-card__image') {
         const placeholder = typeof LazyLoader !== 'undefined' 
-            ? LazyLoader.createImagePlaceholder(400, 300) 
+            ? LazyLoader.createImagePlaceholder(400, 300, "#ddeae6") 
             : '';
         return `<img data-src="${src}" alt="${alt}" class="${cssClass} lazy-image" loading="lazy" src="${placeholder}">`;
     }
