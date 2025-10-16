@@ -198,6 +198,65 @@ Resources are managed through:
 
 ---
 
+### **International Page** (`international.html`)
+
+A showcase for international coffee content, featuring country profiles, global projects, and worldwide coffee initiatives.
+
+#### Features:
+
+##### **Card-Based Display**
+The International page presents content as visually rich cards:
+- **Featured Images**: Each item can include a cover image
+- **Title & Description**: Clear, informative content about each topic
+- **Downloadable Resources**: PDF documents, presentations, and related files
+- **Responsive Grid**: Cards adapt to screen size for optimal viewing
+
+##### **Content Types**
+International items can include:
+- **Country Profiles**: Deep dives into coffee-producing nations
+- **Global Projects**: International coffee initiatives and collaborations
+- **Cultural Content**: Stories about coffee traditions around the world
+- **Research & Reports**: International coffee industry insights
+- **Educational Materials**: Global coffee education resources
+
+##### **Visual Design**
+Each international card features:
+- **Cover Image**: High-quality images representing the content (optional)
+- **Theme Integration**: Consistent styling with the rest of the site
+- **Hover Effects**: Interactive feedback on card interactions
+- **Download Icons**: Clear indicators for available resources
+
+##### **Easy Content Management**
+Adding new international content is straightforward:
+1. Create a folder in `media/international/`
+2. Add `text.json` with title and description
+3. Optionally add a `picture.png` for visual appeal
+4. Include any downloadable files (PDFs, presentations, etc.)
+5. Update `international-items.json` to include the new folder
+
+#### Data Structure:
+Content is stored in `media/international/` with:
+- `international-items.json`: Configuration listing all folders
+- Individual folders for each item containing:
+  - `text.json`: Required title and description
+  - `picture.png/jpg`: Optional cover image
+  - Downloadable files: PDFs, presentations, documents
+
+#### Use Cases:
+- **Global Education**: Learn about coffee cultures worldwide
+- **Research Access**: Download international coffee reports and studies
+- **Cultural Connection**: Understand coffee traditions from different countries
+- **Project Showcase**: Highlight international coffee initiatives
+- **Resource Library**: Access global coffee education materials
+
+#### Example Content:
+- **Burundi Profile**: "The Heart of African Coffee" - exploring Burundi's specialty coffee scene
+- **Origin Stories**: Deep dives into coffee-producing regions
+- **International Projects**: Global partnerships and initiatives
+- **Cultural Features**: Coffee traditions and customs worldwide
+
+---
+
 ## 🎨 Design & Theming
 
 ### **Visual Themes**
@@ -389,6 +448,7 @@ Present on every page via the header:
 - **Archive**: Browse past editions
 - **Masters**: View certification data
 - **Media**: Access downloadable resources
+- **International**: Explore global coffee content
 - **Logo**: Always returns to home page
 
 ### **Breadcrumb Navigation**

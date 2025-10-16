@@ -99,14 +99,42 @@
 }
 
 /* No media message */
-.no-media-message {
+.no-media-message,
+.no-content-message {
     text-align: center;
     padding: 4rem 2rem;
     color: var(--text-color-secondary);
 }
 
-.no-media-message p {
+.no-media-message p,
+.no-content-message p {
     font-size: 1.125rem;
+}
+
+/* International card specific styles */
+.international-card__image-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: var(--secondary-color, #ddeae6);
+}
+
+.international-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.international-card:hover .international-card__image {
+    transform: scale(1.05);
+}
+
+.page-header__icon {
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+    filter: var(--icon-filter);
 }
 
 /* Error message */
