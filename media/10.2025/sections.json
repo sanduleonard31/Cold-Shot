@@ -64,6 +64,15 @@
       "description": "Coffee Masters through time"
     },
     {
+      "id": "certifications",
+      "title": "Certifications",
+      "row": 7,
+      "theme": "news",
+      "layout": "dynamic",
+      "folder": "certifications",
+      "description": "New Coffee Masters and updates"
+    },
+    {
       "id": "projects",
       "title": "Projects",
       "row": 2,

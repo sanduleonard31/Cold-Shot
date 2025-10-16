@@ -258,6 +258,11 @@ class ContentLoader {
                 json: ['text.json'],
                 images: ['picture.png'],
                 pdfs: ['project.pdf']
+            },
+            'certifications': {
+                json: ['text.json'],
+                images: ['picture.png'],
+                pdfs: []
             }
         };
 

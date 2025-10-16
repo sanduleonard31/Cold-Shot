@@ -173,8 +173,8 @@
             "name": "Ruse Eugen",
             "role": "Store Manager",
             "employmentDate": null,
-            "certificationDate": null,
-            "isCertified": false,
+            "certificationDate": "2025-10-09",
+            "isCertified": true,
             "certificationExpiry": null
           },
           "masters": [

@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "folder": "certification-scoresheet",
+      "files": [
+        "National Coffee Master Certification Score Card - ENG.pptx",
+        "National Coffee Master Certification Score Card - RO.pptx"
+      ]
+    }
+  ],
+  "_comment": "Add new media items here. Each item should have a folder name and a list of files. The text.json in each folder provides the title and description."
+}

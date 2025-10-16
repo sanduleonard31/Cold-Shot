@@ -3,7 +3,7 @@
     {
       "id": "champion",
       "title": "Champion's Word",
-      "row": 1,
+      "row": 3,
       "theme": "legendary",
       "layout": "column",
       "folder": "champion",
@@ -12,8 +12,8 @@
     {
       "id": "editor",
       "title": "Editor's Word",
-      "row": 1,
-      "theme": "important",
+      "row": 3,
+      "theme": "legendary",
       "layout": "column",
       "folder": "editor",
       "description": "Insights from the Coffee & Craft Leader"
@@ -21,7 +21,7 @@
     {
       "id": "matcha-zone",
       "title": "Matcha Zone",
-      "row": 2,
+      "row": 4,
       "theme": "caring",
       "layout": "column",
       "folder": "matcha-zone",
@@ -30,7 +30,7 @@
     {
       "id": "knowledge-bites",
       "title": "Knowledge Bites",
-      "row": 3,
+      "row": 5,
       "theme": "astral",
       "layout": "column",
       "folder": "knowledge bites",
@@ -39,7 +39,7 @@
     {
       "id": "spread-kindness",
       "title": "Spread Kindness",
-      "row": 4,
+      "row": 5,
       "theme": "love",
       "layout": "column",
       "folder": "spread-kindness",
@@ -48,7 +48,7 @@
     {
       "id": "master-speaks",
       "title": "Master Speaks",
-      "row": 5,
+      "row": 3,
       "theme": "hard",
       "layout": "row",
       "folder": "master-speaks",
@@ -64,9 +64,18 @@
       "description": "Coffee Masters through time"
     },
     {
+      "id": "certifications",
+      "title": "Certifications",
+      "row": 7,
+      "theme": "news",
+      "layout": "dynamic",
+      "folder": "certifications",
+      "description": "New Coffee Masters and updates"
+    },
+    {
       "id": "projects",
       "title": "Projects",
-      "row": 7,
+      "row": 2,
       "theme": "action",
       "layout": "dropdown",
       "folder": "projects",
@@ -75,7 +84,7 @@
     {
       "id": "featured",
       "title": "Featured",
-      "row": 8,
+      "row": 1,
       "theme": "news",
       "layout": "dynamic",
       "folder": "featured",
