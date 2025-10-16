@@ -6,6 +6,18 @@
         "National Coffee Master Certification Score Card - ENG.pptx",
         "National Coffee Master Certification Score Card - RO.pptx"
       ]
+    },
+    {
+      "folder": "2024 EMEA Champion's Drink",
+      "files": [
+        "Dragonardo Cold Brew Tonic.pdf"
+      ]
+    },
+    {
+      "folder": "2025 EMEA Champion's Drink copy",
+      "files": [
+        "Canolli Latte.pdf"
+      ]
     }
   ],
   "_comment": "Add new media items here. Each item should have a folder name and a list of files. The text.json in each folder provides the title and description."
