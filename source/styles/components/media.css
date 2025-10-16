@@ -131,10 +131,12 @@
 }
 
 .page-header__icon {
-    width: 3rem;
-    height: 3rem;
-    margin-bottom: 1rem;
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 0.5rem;
     filter: var(--icon-filter);
+    display: inline-block;
+    vertical-align: middle;
 }
 
 /* Error message */
