@@ -7,20 +7,28 @@
 class LazyLoader {
     constructor(options = {}) {
         this.options = {
-            rootMargin: options.rootMargin || '50px',
+            rootMargin: options.rootMargin || '200px',
             threshold: options.threshold || 0.01,
             imageClass: options.imageClass || 'lazy-image',
             sectionClass: options.sectionClass || 'lazy-section',
             loadingClass: options.loadingClass || 'lazy-loading',
             loadedClass: options.loadedClass || 'lazy-loaded',
             errorClass: options.errorClass || 'lazy-error',
-            placeholderColor: options.placeholderColor || '#f0f0f0'
+            placeholderColor: options.placeholderColor || '#f0f0f0',
+            lowQualityDelay: options.lowQualityDelay || 100,
+            highQualityDelay: options.highQualityDelay || 300,
+            imageQuality: options.imageQuality || 0.7,
+            enableProgressiveLoading: options.enableProgressiveLoading !== false
         };
 
         this.imageObserver = null;
         this.sectionObserver = null;
         this.loadedImages = new Set();
         this.loadedSections = new Set();
+        this.loadingQueue = [];
+        this.isProcessingQueue = false;
+        this.scrollTimeout = null;
+        this.isScrolling = false;
     }
 
     /**
@@ -34,9 +42,25 @@ class LazyLoader {
             return;
         }
 
+        this.setupScrollListener();
         this.setupImageObserver();
         this.setupSectionObserver();
         this.observeExistingElements();
+    }
+
+    /**
+     * Setup scroll listener to pause loading during rapid scrolling
+     */
+    setupScrollListener() {
+        window.addEventListener('scroll', () => {
+            this.isScrolling = true;
+            clearTimeout(this.scrollTimeout);
+            
+            this.scrollTimeout = setTimeout(() => {
+                this.isScrolling = false;
+                this.processQueue();
+            }, 150);
+        }, { passive: true });
     }
 
     /**
@@ -101,6 +125,12 @@ class LazyLoader {
             img.style.backgroundColor = this.options.placeholderColor;
         }
 
+        // Set loading spinner as initial src if not already set
+        if (!img.src || img.src === '' || img.src === window.location.href) {
+            img.src = LazyLoader.createLoadingSpinner(50, '#4a90e2');
+            img.style.padding = '20px';
+        }
+
         // Add loading class
         img.classList.add(this.options.loadingClass);
 
@@ -125,25 +155,107 @@ class LazyLoader {
     loadImage(img) {
         if (this.loadedImages.has(img)) return;
 
+        // Add to queue if scrolling rapidly
+        if (this.isScrolling) {
+            this.loadingQueue.push(img);
+            return;
+        }
+
         const src = img.dataset.src || img.getAttribute('data-src');
         const srcset = img.dataset.srcset || img.getAttribute('data-srcset');
+        const lowQualitySrc = img.dataset.lowQualitySrc || img.getAttribute('data-low-quality-src');
 
         if (!src && !srcset) {
             console.warn('No data-src or data-srcset found for lazy image:', img);
             return;
         }
 
-        // Create a new image to preload
-        const tempImg = new Image();
+        // Progressive loading: low quality first, then high quality
+        if (this.options.enableProgressiveLoading && lowQualitySrc) {
+            this.loadProgressiveImage(img, lowQualitySrc, src, srcset);
+        } else {
+            this.loadStandardImage(img, src, srcset);
+        }
+    }
 
-        tempImg.onload = () => {
+    /**
+     * Load image progressively (low quality first, then high quality)
+     */
+    loadProgressiveImage(img, lowQualitySrc, highQualitySrc, srcset) {
+        // First load low quality version
+        const lowQualityImg = new Image();
+        
+        lowQualityImg.onload = () => {
+            // Apply low quality image immediately
+            img.src = lowQualitySrc;
+            img.classList.add('lazy-low-quality');
+            
+            // Then load high quality after a delay
+            setTimeout(() => {
+                this.loadHighQualityImage(img, highQualitySrc, srcset);
+            }, this.options.highQualityDelay);
+        };
+
+        lowQualityImg.onerror = () => {
+            // If low quality fails, try loading high quality directly
+            this.loadStandardImage(img, highQualitySrc, srcset);
+        };
+
+        lowQualityImg.src = lowQualitySrc;
+    }
+
+    /**
+     * Load high quality version of image
+     */
+    loadHighQualityImage(img, src, srcset) {
+        const highQualityImg = new Image();
+
+        highQualityImg.onload = () => {
             this.applyImage(img, src, srcset);
             this.loadedImages.add(img);
             img.classList.remove(this.options.loadingClass);
+            img.classList.remove('lazy-low-quality');
             img.classList.add(this.options.loadedClass);
             
             // Unobserve after loading
-            this.imageObserver.unobserve(img);
+            if (this.imageObserver) {
+                this.imageObserver.unobserve(img);
+            }
+        };
+
+        highQualityImg.onerror = () => {
+            console.error('Error loading high quality image:', src);
+            img.classList.remove(this.options.loadingClass);
+            img.classList.remove('lazy-low-quality');
+            img.classList.add(this.options.errorClass);
+            
+            if (this.imageObserver) {
+                this.imageObserver.unobserve(img);
+            }
+        };
+
+        if (srcset) highQualityImg.srcset = srcset;
+        if (src) highQualityImg.src = src;
+    }
+
+    /**
+     * Load image in standard way (single quality)
+     */
+    loadStandardImage(img, src, srcset) {
+        const tempImg = new Image();
+
+        tempImg.onload = () => {
+            // Add small delay to prevent all images loading at once
+            setTimeout(() => {
+                this.applyImage(img, src, srcset);
+                this.loadedImages.add(img);
+                img.classList.remove(this.options.loadingClass);
+                img.classList.add(this.options.loadedClass);
+                
+                if (this.imageObserver) {
+                    this.imageObserver.unobserve(img);
+                }
+            }, this.options.lowQualityDelay);
         };
 
         tempImg.onerror = () => {
@@ -151,31 +263,60 @@ class LazyLoader {
             img.classList.remove(this.options.loadingClass);
             img.classList.add(this.options.errorClass);
             
-            // Unobserve even on error
-            this.imageObserver.unobserve(img);
+            if (this.imageObserver) {
+                this.imageObserver.unobserve(img);
+            }
         };
 
-        // Start loading
         if (srcset) tempImg.srcset = srcset;
         if (src) tempImg.src = src;
+    }
+
+    /**
+     * Process queued images after scrolling stops
+     */
+    processQueue() {
+        if (this.isProcessingQueue || this.loadingQueue.length === 0) return;
+        
+        this.isProcessingQueue = true;
+        const batch = this.loadingQueue.splice(0, 3); // Process 3 images at a time
+        
+        batch.forEach((img, index) => {
+            setTimeout(() => {
+                this.loadImage(img);
+            }, index * 100); // Stagger the loading
+        });
+        
+        setTimeout(() => {
+            this.isProcessingQueue = false;
+            if (this.loadingQueue.length > 0) {
+                this.processQueue();
+            }
+        }, 300);
     }
 
     /**
      * Apply the loaded image to the element
      */
     applyImage(img, src, srcset) {
-        if (srcset) {
-            img.srcset = srcset;
-        }
-        if (src) {
-            img.src = src;
-        }
-        
-        // Remove placeholder background with fade effect
-        img.style.transition = 'background-color 0.3s ease';
-        setTimeout(() => {
-            img.style.backgroundColor = 'transparent';
-        }, 50);
+        // Use requestAnimationFrame for smoother transitions
+        requestAnimationFrame(() => {
+            if (srcset) {
+                img.srcset = srcset;
+            }
+            if (src) {
+                img.src = src;
+            }
+            
+            // Remove padding used for spinner
+            img.style.padding = '';
+            
+            // Remove placeholder background with fade effect
+            img.style.transition = 'background-color 0.5s ease, opacity 0.5s ease';
+            setTimeout(() => {
+                img.style.backgroundColor = 'transparent';
+            }, 50);
+        });
     }
 
     /**
@@ -265,8 +406,12 @@ class LazyLoader {
         if (this.sectionObserver) {
             this.sectionObserver.disconnect();
         }
+        if (this.scrollTimeout) {
+            clearTimeout(this.scrollTimeout);
+        }
         this.loadedImages.clear();
         this.loadedSections.clear();
+        this.loadingQueue = [];
     }
 
     /**
@@ -277,6 +422,27 @@ class LazyLoader {
         const svg = `
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}">
                 <rect width="${width}" height="${height}" fill="${color}"/>
+            </svg>
+        `;
+        return `data:image/svg+xml;base64,${btoa(svg)}`;
+    }
+
+    /**
+     * Create a loading spinner SVG
+     */
+    static createLoadingSpinner(size = 50, color = '#4a90e2') {
+        const svg = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="${size}" height="${size}">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="${color}" stroke-width="8" opacity="0.2"/>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="${color}" stroke-width="8" stroke-dasharray="70 200" stroke-linecap="round">
+                    <animateTransform
+                        attributeName="transform"
+                        type="rotate"
+                        from="0 50 50"
+                        to="360 50 50"
+                        dur="1.5s"
+                        repeatCount="indefinite"/>
+                </circle>
             </svg>
         `;
         return `data:image/svg+xml;base64,${btoa(svg)}`;

@@ -17,6 +17,23 @@ main {
     padding: var(--layout-padding);
     padding-bottom: 4rem;
     flex: 1 0 auto;
+    /* Prevent footer from snapping during loading */
+    min-height: calc(100vh - var(--header-height) - 200px);
+}
+
+#main-content {
+    /* Reserve space for content to prevent layout shift */
+    min-height: 500px;
+}
+
+#content-container {
+    /* Prevent content container from collapsing */
+    min-height: 400px;
+}
+
+/* Archive container minimum height */
+#archive-container {
+    min-height: 500px;
 }
 
 /* Ensure footer stays at bottom */
@@ -29,11 +46,19 @@ main {
     main {
         margin-top: var(--header-height-phone);
         padding: 1.5rem;
+        min-height: calc(100vh - var(--header-height-phone) - 150px);
     }
 }
 
 @media (max-width: 480px) {
     main {
         padding: 1rem;
+        min-height: calc(100vh - var(--header-height-phone) - 100px);
+    }
+    
+    #main-content,
+    #content-container,
+    #archive-container {
+        min-height: 300px;
     }
 }
