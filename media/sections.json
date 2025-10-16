@@ -1,4 +1,5 @@
 {
+  "_comment": "Global sections configuration for all month folders. Sections will only be displayed if their content folder exists in the specific month folder.",
   "sections": [
     {
       "id": "featured",

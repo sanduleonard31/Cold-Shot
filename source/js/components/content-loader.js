@@ -130,9 +130,20 @@ class ContentLoader {
 
     async loadSections() {
         try {
-            const response = await fetch(`${this.basePath}/sections.json`);
-            const data = await response.json();
-            this.sections = data.sections;
+            // First try to load from the global media/sections.json
+            let response = await fetch('./media/sections.json');
+            
+            // If not found, fall back to month-specific sections.json
+            if (!response.ok) {
+                response = await fetch(`${this.basePath}/sections.json`);
+            }
+            
+            if (response.ok) {
+                const data = await response.json();
+                this.sections = data.sections;
+            } else {
+                throw new Error('No sections.json found');
+            }
         } catch (error) {
             console.error('Error loading sections:', error);
             this.sections = [];
@@ -188,8 +199,29 @@ class ContentLoader {
     async renderSection(section) {
         const sectionPath = `${this.basePath}/${section.folder}`;
         
-        // Detect available media in the folder
+        // Check if the section folder exists by trying to detect media
         const media = await this.detectMedia(sectionPath, section.id);
+        
+        // For dynamic and dropdown layouts, check if they have content
+        if (section.layout === 'dynamic') {
+            const hasContent = await this.checkDynamicSectionHasContent(sectionPath);
+            if (!hasContent) {
+                console.log(`Skipping section ${section.id}: No content found`);
+                return null;
+            }
+        } else if (section.layout === 'dropdown') {
+            const hasContent = await this.checkDropdownSectionHasContent(sectionPath);
+            if (!hasContent) {
+                console.log(`Skipping section ${section.id}: No content found`);
+                return null;
+            }
+        } else {
+            // For column/row layouts, check if there's any media
+            if (media.json.length === 0 && media.images.length === 0 && media.pdfs.length === 0) {
+                console.log(`Skipping section ${section.id}: No media found`);
+                return null;
+            }
+        }
         
         // Handle different layout types
         switch (section.layout) {
@@ -202,6 +234,35 @@ class ContentLoader {
             case 'column':
             default:
                 return await this.renderColumnLayout(section, sectionPath, media);
+        }
+    }
+
+    async checkDynamicSectionHasContent(path) {
+        try {
+            // Check if featured-items.json exists
+            const response = await fetch(`${path}/featured-items.json`);
+            if (response.ok) {
+                const data = await response.json();
+                return (data.folders && data.folders.length > 0) || (data.items && data.items.length > 0);
+            }
+            return false;
+        } catch (error) {
+            return false;
+        }
+    }
+
+    async checkDropdownSectionHasContent(path) {
+        try {
+            // Try to detect at least one project folder
+            for (let i = 1; i <= 10; i++) {
+                const response = await fetch(`${path}/project-${i}/text.json`, { method: 'HEAD' });
+                if (response.ok) {
+                    return true;
+                }
+            }
+            return false;
+        } catch (error) {
+            return false;
         }
     }
 

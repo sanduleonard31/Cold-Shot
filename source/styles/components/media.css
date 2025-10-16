@@ -1,5 +1,10 @@
 /* Media Page Styles */
 
+/* Media page specific title size */
+.page-title {
+    font-size: 1.75rem;
+}
+
 .media-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -29,7 +34,7 @@
 
 .media-card__title {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
     font-family: var(--font-trade-gothic-bold);
 }

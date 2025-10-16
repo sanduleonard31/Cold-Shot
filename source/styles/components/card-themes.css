@@ -766,6 +766,11 @@
     margin-bottom: 2rem;
 }
 
+/* Remove extra bottom padding for master-speaks section */
+.section-master-speaks.card-row {
+    margin-bottom: 0;
+}
+
 .card-column {
     display: flex;
     flex-direction: column;

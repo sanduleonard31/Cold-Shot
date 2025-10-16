@@ -189,6 +189,11 @@ class ArchiveLoader {
                 return await this.loadFeaturedContent(path);
             }
             
+            // Special handling for certifications section - load all certification items
+            if (section.id === 'certifications') {
+                return await this.loadCertificationsContent(path);
+            }
+            
             // Detect available media
             const media = await this.detectMedia(path, section.id);
             
@@ -320,6 +325,50 @@ class ArchiveLoader {
         return { items: items };
     }
 
+    async loadCertificationsContent(path) {
+        const items = [];
+        
+        // Try to load a featured-items.json manifest file first
+        try {
+            const manifestResponse = await fetch(`${path}/featured-items.json`);
+            if (manifestResponse.ok) {
+                const manifest = await manifestResponse.json();
+                const folders = manifest.folders || manifest.items || [];
+                
+                for (const folder of folders) {
+                    try {
+                        const itemPath = `${path}/${folder}`;
+                        const response = await fetch(`${itemPath}/text.json`);
+                        
+                        if (response.ok) {
+                            const data = await response.json();
+                            const media = await this.detectMedia(itemPath, 'certifications');
+                            
+                            items.push({
+                                id: folder,
+                                data: data,
+                                media: media,
+                                path: itemPath
+                            });
+                        }
+                    } catch (error) {
+                        console.warn(`Could not load certification item: ${folder}`, error);
+                    }
+                }
+                
+                // Return items if manifest was found and processed
+                if (items.length === 0) return null;
+                return { items: items };
+            }
+        } catch (error) {
+            // No manifest file
+            console.log('No featured-items.json manifest found for certifications');
+        }
+
+        // Return null if no items found
+        return items.length > 0 ? { items: items } : null;
+    }
+
     async detectMedia(path, sectionId) {
         const media = {
             json: [],
@@ -340,7 +389,8 @@ class ArchiveLoader {
                 pdfs: [] 
             },
             'projects': { json: ['text.json'], images: ['picture.png'], pdfs: ['project.pdf'] },
-            'featured': { json: ['text.json'], images: ['picture.png'], pdfs: ['project.pdf'] }
+            'featured': { json: ['text.json'], images: ['picture.png'], pdfs: ['project.pdf'] },
+            'certifications': { json: ['text.json'], images: ['picture.png'], pdfs: [] }
         };
 
         const expectedFiles = fileMap[sectionId] || {
@@ -462,6 +512,9 @@ class ArchiveLoader {
                 sectionHTML = this.renderProjectsSection(section, content, path, monthLabel);
                 break;
             case 'featured':
+            case 'certifications':
+                sectionHTML = this.renderFeaturedItemsSection(section, content, path, monthLabel);
+                break;
             case 'matcha-zone':
                 sectionHTML = this.renderMediaSection(section, content, path, monthLabel);
                 break;
@@ -650,6 +703,39 @@ class ArchiveLoader {
                 </div>
             </div>
         `;
+    }
+
+    renderFeaturedItemsSection(section, content, path, monthLabel) {
+        // Render multiple featured/certification items in project format
+        if (content.items && content.items.length > 0) {
+            let itemsHTML = '';
+            
+            content.items.forEach(item => {
+                const imgHTML = item.media.images.length > 0 
+                    ? this.createLazyImageHTML(`${item.path}/${item.media.images[0]}`, item.data.title) 
+                    : '';
+                itemsHTML += `
+                    <div class="archive-card archive-card--${section.theme} archive-section--${section.id}">
+                        <div class="archive-card__header">
+                            <h3 class="archive-card__title">${item.data.title || section.title}</h3>
+                            <span class="archive-card__date">${monthLabel}</span>
+                        </div>
+                        <div class="archive-card__content archive-card__content--project">
+                            ${imgHTML}
+                            <div class="archive-card__text-group">
+                                ${this.formatText(item.data.description)}
+                                ${item.media.pdfs.length > 0 ? `<a href="${item.path}/${item.media.pdfs[0]}" class="archive-card__button" target="_blank">📄 Read More</a>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            return itemsHTML;
+        }
+        
+        // Fallback for single item
+        return this.renderGenericSection(section, content, path, monthLabel);
     }
 
     renderMediaSection(section, content, path, monthLabel) {
