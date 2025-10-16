@@ -33,14 +33,14 @@ class MyFooter extends HTMLElement{
             const socialLinks = this.querySelectorAll('.footer__social-link');
             
             if (socialLinks.length >= 4) {
-                // EMEA Coffee Team Instagram (first one) - using ro-partners-instagram
+                // Starbucks Partners Instagram - using ro-partners-instagram
                 if (links['ro-partners-instagram']) {
                     socialLinks[0].href = links['ro-partners-instagram'].replace('$0', '');
                 }
                 
-                // Coffee Ambassador Instagram (second one) - using editor-instagram
-                if (links['editor-instagram']) {
-                    socialLinks[1].href = links['editor-instagram'].replace('$0', '');
+                // EMEA Coffee Team Instagram - using emea-instagram
+                if (links['emea-instagram']) {
+                    socialLinks[1].href = links['emea-instagram'].replace('$0', '');
                 }
                 
                 // BrewCrew Podcast YouTube
